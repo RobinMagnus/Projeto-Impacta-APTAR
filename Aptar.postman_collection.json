@@ -1,0 +1,353 @@
+{
+	"info": {
+		"_postman_id": "d236236b-852f-4590-a84d-1998fdfdb78a",
+		"name": "Aptar",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29127693"
+	},
+	"item": [
+		{
+			"name": "Tecnicos",
+			"item": [
+				{
+					"name": "findAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/tecnicos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tecnicos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/tecnicos/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tecnicos",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Paulo Silva\",\r\n    \"email\": \"paulo@mail.com\",\r\n    \"senha\": \"123\",\r\n    \"telefone\": \"11912345678\",\r\n    \"endereco\": {\r\n        \"logradouro\": \"Rua Anibal\",\r\n        \"numero\": 123,\r\n        \"complemento\": null,\r\n        \"cep\": \"01234567\",\r\n        \"bairro\": \"Bragança\",\r\n        \"cidade\": \"São Paulo\",\r\n        \"estado\": \"SP\"\r\n    },\r\n    \"cpf\": \"12345548957\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/tecnicos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tecnicos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"nome\": \"Valdir Cezar 123\",\r\n    \"email\": \"valdir@mail.com\",\r\n    \"senha\": \"123\",\r\n    \"telefone\": \"11912345678\",\r\n    \"endereco\": {\r\n        \"logradouro\": \"Rua Anibal\",\r\n        \"numero\": 123,\r\n        \"complemento\": null,\r\n        \"cep\": \"01234567\",\r\n        \"bairro\": \"Bragança\",\r\n        \"cidade\": \"São Paulo\",\r\n        \"estado\": \"SP\"\r\n    },\r\n    \"perfis\": [\r\n        0,\r\n        2\r\n    ],\r\n    \"dataCriacao\": \"22/02/2024\",\r\n    \"cpf\": \"42817219082\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/tecnicos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tecnicos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/tecnicos/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tecnicos",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Empresas",
+			"item": [
+				{
+					"name": "findAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/empresas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"empresas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/empresas/401",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"empresas",
+								"401"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Google\",\r\n  \"email\": \"google@mail.com\",\r\n  \"senha\": \"123456\",\r\n  \"telefone\": \"1122334455\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Av. Paulista\",\r\n    \"numero\": 1000,\r\n    \"complemento\": \"Sala 501\",\r\n    \"cep\": \"01310-100\",\r\n    \"bairro\": \"Bela Vista\",\r\n    \"cidade\": \"São Paulo\",\r\n    \"estado\": \"SP\"\r\n  },\r\n  \"cnpj\": \"23639006000109\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/empresas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"empresas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 7,\r\n        \"nome\": \"Burger King SP\",\r\n        \"email\": \"burgerking@maiil.com\",\r\n        \"senha\": \"4556\",\r\n        \"telefone\": \"11987654322\",\r\n        \"endereco\": {\r\n            \"logradouro\": \"Avenida Paulista\",\r\n            \"numero\": 456,\r\n            \"complemento\": null,\r\n            \"cep\": \"09876543\",\r\n            \"bairro\": \"Bela Vista\",\r\n            \"cidade\": \"São Paulo\",\r\n            \"estado\": \"SP\"\r\n        },\r\n        \"perfis\": [\r\n            1\r\n        ],\r\n        \"dataCriacao\": \"23/02/2024\",\r\n        \"cnpj\": \"49537022000184\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/empresas/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"empresas",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/empresas/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"empresas",
+								"10"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Chamados",
+			"item": [
+				{
+					"name": "findAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/chamados",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"chamados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/chamados/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"chamados",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"prioridade\": 0,\r\n    \"status\": 0,\r\n    \"titulo\": \"Chamado 05 - Teste Create\",\r\n    \"observacoes\": \"Quinto Chamado - teste\",\r\n    \"endereco\": {\r\n        \"logradouro\": \"Rua Pamplona\",\r\n        \"numero\": 567,\r\n        \"complemento\": null,\r\n        \"cep\": \"54321098\",\r\n        \"bairro\": \"Jardim Paulista\",\r\n        \"cidade\": \"São Paulo\",\r\n        \"estado\": \"SP\"\r\n    },\r\n    \"tecnico\": 1,\r\n    \"empresa\": 9\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/chamados",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"chamados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"dataAbertura\": \"23/02/2024\",\r\n        \"prioridade\": 0,\r\n        \"status\": 0,\r\n        \"titulo\": \"Chamado 05 Teste Put\",\r\n        \"observacoes\": \"Quinto Chamado\",\r\n        \"endereco\": {\r\n            \"logradouro\": \"Rua Pamplona\",\r\n            \"numero\": 567,\r\n            \"complemento\": null,\r\n            \"cep\": \"54321098\",\r\n            \"bairro\": \"Morumbi\",\r\n            \"cidade\": \"São Paulo\",\r\n            \"estado\": \"PI\"\r\n        },\r\n        \"tecnico\": 1,\r\n        \"empresa\": 6\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/chamados/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"chamados",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
