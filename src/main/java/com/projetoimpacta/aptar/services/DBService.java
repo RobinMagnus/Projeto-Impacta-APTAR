@@ -4,8 +4,13 @@ import com.projetoimpacta.aptar.domain.Chamado;
 import com.projetoimpacta.aptar.domain.Empresa;
 import com.projetoimpacta.aptar.domain.Endereco;
 import com.projetoimpacta.aptar.domain.Tecnico;
+import com.projetoimpacta.aptar.domain.enums.Perfil;
 import com.projetoimpacta.aptar.domain.enums.Prioridade;
 import com.projetoimpacta.aptar.domain.enums.Status;
+import com.projetoimpacta.aptar.repositories.ChamadoRepository;
+import com.projetoimpacta.aptar.repositories.EmpresaRepository;
+import com.projetoimpacta.aptar.repositories.EntidadeRepository;
+import com.projetoimpacta.aptar.repositories.TecnicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,20 +36,20 @@ public class DBService {
 
         Tecnico tec1 = new Tecnico(null, "Valdir Cezar", "valdir@mail.com", "123", "11912345678",
                 new Endereco("Rua Anibal", 123, null, "01234567", "Bragança", "São Paulo", "SP"),
-                "42817219082", "789112E2020", "Eletricista");
+                "42817219082");
         tec1.addPerfil(Perfil.ADMIN);
         Tecnico tec2 = new Tecnico(null, "Richard Stallman", "stallman@mail.com", "123", "11912345678",
                 new Endereco("Rua Anibal", 123, null, "01234567", "Bragança", "São Paulo", "SP"),
-                "85646225051", "789062E2021", "Eletricista");
+                "85646225051");
         Tecnico tec3 = new Tecnico(null, "Claude Elwood Shannon", "shannon@mail.com", "123", "11912345678",
                 new Endereco("Rua Anibal", 123, null, "01234567", "Bragança", "São Paulo", "SP"),
-                "83578998036", "789015E2022", "Eletricista");
+                "83578998036");
         Tecnico tec4 = new Tecnico(null, "Tim Berners-Lee", "lee@mail.com", "123", "11912345678",
                 new Endereco("Rua Anibal", 123, null, "01234567", "Bragança", "São Paulo", "SP"),
-                "39742638020", "799012E2023", "Eletricista");
+                "39742638020");
         Tecnico tec5 = new Tecnico(null, "Linus Torvalds", "linus@mail.com", "123","11912345678",
                 new Endereco("Rua Anibal", 123, null, "01234567", "Bragança", "São Paulo", "SP"),
-                "55656833003", "782012E2024", "Eletricista");
+                "55656833003");
 
         tecnicoRepository.saveAll(List.of(tec1, tec2, tec3, tec4, tec5));
 
