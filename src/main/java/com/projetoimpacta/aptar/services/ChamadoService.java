@@ -6,7 +6,7 @@ import com.projetoimpacta.aptar.domain.NumeroChamado;
 import com.projetoimpacta.aptar.domain.Tecnico;
 import com.projetoimpacta.aptar.domain.enums.Prioridade;
 import com.projetoimpacta.aptar.domain.enums.Status;
-import com.projetoimpacta.aptar.dtos.ChamadoDTO;
+import com.projetoimpacta.aptar.dtos.ChamadoDTOinput_out;
 import com.projetoimpacta.aptar.repositories.ChamadoRepository;
 import com.projetoimpacta.aptar.services.exceptions.ObjectnotFoundException;
 import jakarta.validation.Valid;
@@ -38,11 +38,11 @@ public class ChamadoService {
         return repository.findAll();
     }
 
-    public Chamado create(@Valid ChamadoDTO objDTO) {
+    public Chamado create(@Valid ChamadoDTOinput_out objDTO) {
         return repository.save(newChamado(objDTO));
     }
 
-    public Chamado update(Long id, ChamadoDTO objDTO) {
+    public Chamado update(Long id, ChamadoDTOinput_out objDTO) {
         objDTO.setId(id);
         Chamado chamadoExistente = findById(id);
         Chamado novoChamado = newChamado(objDTO);
@@ -50,7 +50,7 @@ public class ChamadoService {
         return repository.save(novoChamado);
     }
 
-    private Chamado newChamado(ChamadoDTO obj) {
+    private Chamado newChamado(ChamadoDTOinput_out obj) {
         Tecnico tecnico = tecnicoService.findById(obj.getTecnico());
         Empresa empresa = empresaService.findById(obj.getEmpresa());
 
