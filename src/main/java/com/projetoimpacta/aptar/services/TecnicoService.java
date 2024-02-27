@@ -2,7 +2,7 @@ package com.projetoimpacta.aptar.services;
 
 import com.projetoimpacta.aptar.domain.Tecnico;
 import com.projetoimpacta.aptar.repositories.TecnicoRepository;
-import com.projetoimpacta.aptar.dtos.TecnicoDTO;
+import com.projetoimpacta.aptar.dtos.TecnicoDTOinput;
 import com.projetoimpacta.aptar.services.exceptions.ObjectnotFoundException;
 import com.projetoimpacta.aptar.services.exceptions.DataIntegrityViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,18 +22,23 @@ public class TecnicoService {
         return obj.orElseThrow(() -> new ObjectnotFoundException("Técnico não encontrado! Id: " + id));
     }
 
+    public Tecnico findByCpf(String cpf) {
+        Optional<Tecnico> obj = repository.findByCpf(cpf);
+        return obj.orElseThrow(() -> new ObjectnotFoundException("Técnico não encontrado!"));
+    }
+
     public List<Tecnico> findAll() {
         return repository.findAll();
     }
 
-    public Tecnico create(TecnicoDTO objDTO) {
+    public Tecnico create(TecnicoDTOinput objDTO) {
         objDTO.setId(null);
         validaPorCpfeEmail(objDTO);
         Tecnico newObj = new Tecnico(objDTO);
         return repository.save(newObj);
     }
 
-    public Tecnico update(Long id, TecnicoDTO objDTO) {
+    public Tecnico update(Long id, TecnicoDTOinput objDTO) {
         objDTO.setId(id);
         findById(id);
         Tecnico oldObj;
@@ -50,7 +55,7 @@ public class TecnicoService {
         repository.deleteById(id);
     }
 
-    private void validaPorCpfeEmail(TecnicoDTO objDTO) {
+    private void validaPorCpfeEmail(TecnicoDTOinput objDTO) {
 
         Optional<Tecnico> obj = repository.findByCpf(objDTO.getCpf());
         if (obj.isPresent() && obj.get().getId() != objDTO.getId()) {

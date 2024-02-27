@@ -1,7 +1,8 @@
 package com.projetoimpacta.aptar.resources;
 
 import com.projetoimpacta.aptar.domain.Tecnico;
-import com.projetoimpacta.aptar.dtos.TecnicoDTO;
+import com.projetoimpacta.aptar.dtos.TecnicoDTOinput;
+import com.projetoimpacta.aptar.dtos.TecnicoDTOout;
 import com.projetoimpacta.aptar.services.TecnicoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,33 +22,41 @@ public class TecnicoResource {
     private TecnicoService service;
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<TecnicoDTO> findById(@PathVariable Long id) {
+    public ResponseEntity<TecnicoDTOout> findById(@PathVariable Long id) {
         Tecnico obj = service.findById(id);
-        return ResponseEntity.ok().body(new TecnicoDTO(obj));
+        new TecnicoDTOinput(obj);
+        return ResponseEntity.ok().body(new TecnicoDTOout(obj));
+    }
+
+    @GetMapping(value = "/search/{cpf}")
+    public ResponseEntity<TecnicoDTOout> findByCpf(@PathVariable String cpf) {
+        Tecnico obj = service.findByCpf(cpf);
+        new TecnicoDTOinput(obj);
+        return ResponseEntity.ok().body(new TecnicoDTOout(obj));
     }
 
     @GetMapping
-    public ResponseEntity<List<TecnicoDTO>> findAll() {
+    public ResponseEntity<List<TecnicoDTOout>> findAll() {
         List<Tecnico> list = service.findAll();
-        List<TecnicoDTO> listDTO = list.stream().map(TecnicoDTO::new).collect(Collectors.toList());
+        List<TecnicoDTOout> listDTO = list.stream().map(TecnicoDTOout::new).collect(Collectors.toList());
         return ResponseEntity.ok().body(listDTO);
     }
 
     @PostMapping
-    public ResponseEntity<TecnicoDTO> create(@Valid @RequestBody TecnicoDTO objDTO) {
+    public ResponseEntity<TecnicoDTOinput> create(@Valid @RequestBody TecnicoDTOinput objDTO) {
         Tecnico newObj = service.create(objDTO);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<TecnicoDTO> update(@PathVariable Long id, @Valid @RequestBody TecnicoDTO objDTO) {
+    public ResponseEntity<TecnicoDTOinput> update(@PathVariable Long id, @Valid @RequestBody TecnicoDTOinput objDTO) {
         Tecnico obj = service.update(id, objDTO);
-        return ResponseEntity.ok().body(new TecnicoDTO(obj));
+        return ResponseEntity.ok().body(new TecnicoDTOinput(obj));
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<TecnicoDTO> delete(@PathVariable Long id) {
+    public ResponseEntity<TecnicoDTOinput> delete(@PathVariable Long id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
