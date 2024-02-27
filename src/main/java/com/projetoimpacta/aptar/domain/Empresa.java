@@ -2,7 +2,7 @@ package com.projetoimpacta.aptar.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.projetoimpacta.aptar.domain.enums.Perfil;
-import com.projetoimpacta.aptar.dtos.EmpresaDTO;
+import com.projetoimpacta.aptar.dtos.EmpresaDTOinput;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -40,7 +40,7 @@ public class Empresa extends Entidade implements Serializable {
         addPerfil(Perfil.EMPRESA);
     }
 
-    public Empresa(EmpresaDTO obj) {
+    public Empresa(EmpresaDTOinput obj) {
         this.id = obj.getId();
         this.nome = obj.getNome();
         this.email = obj.getEmail();

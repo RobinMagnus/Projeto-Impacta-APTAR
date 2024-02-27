@@ -2,7 +2,7 @@ package com.projetoimpacta.aptar.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.projetoimpacta.aptar.domain.enums.Perfil;
-import com.projetoimpacta.aptar.dtos.TecnicoDTO;
+import com.projetoimpacta.aptar.dtos.TecnicoDTOinput;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -40,7 +40,7 @@ public class Tecnico extends Entidade implements Serializable {
         addPerfil(Perfil.TECNICO);
     }
 
-    public Tecnico(TecnicoDTO obj) {
+    public Tecnico(TecnicoDTOinput obj) {
         this.id = obj.getId();
         this.nome = obj.getNome();
         this.email = obj.getEmail();
