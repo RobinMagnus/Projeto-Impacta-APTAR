@@ -1,8 +1,8 @@
 package com.projetoimpacta.aptar.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.projetoimpacta.aptar.domain.Empresa;
 import com.projetoimpacta.aptar.domain.Endereco;
-import com.projetoimpacta.aptar.domain.Tecnico;
 import com.projetoimpacta.aptar.domain.enums.Perfil;
 import jakarta.validation.constraints.NotNull;
 
@@ -13,7 +13,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class TecnicoDTO implements Serializable {
+public class EmpresaDTOinput implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
@@ -32,15 +32,15 @@ public class TecnicoDTO implements Serializable {
 
     @JsonFormat(pattern = "dd/MM/yyyy")
     protected LocalDate dataCriacao = LocalDate.now();
-    @NotNull(message = "O campo CPF é requerido")
-    private String cpf;
+    @NotNull(message = "O campo CNPJ é requerido")
+    private String cnpj;
 
 
-    public TecnicoDTO() {
-        addPerfil(Perfil.TECNICO);
+    public EmpresaDTOinput() {
+        addPerfil(Perfil.EMPRESA);
     }
 
-    public TecnicoDTO(Tecnico obj) {
+    public EmpresaDTOinput(Empresa obj) {
         this.id = obj.getId();
         this.nome = obj.getNome();
         this.email = obj.getEmail();
@@ -49,7 +49,7 @@ public class TecnicoDTO implements Serializable {
         this.endereco = obj.getEndereco();
         this.perfis = obj.getPerfis().stream().map(Perfil::getCodigo).collect(Collectors.toSet());
         this.dataCriacao = obj.getDataCriacao();
-        this.cpf = obj.getCpf();
+        this.cnpj = obj.getCnpj();
     }
 
 
@@ -109,11 +109,10 @@ public class TecnicoDTO implements Serializable {
         this.dataCriacao = dataCriacao;
     }
 
-    public String getCpf() {
-        return cpf;
+    public String getCnpj() {
+        return cnpj;
     }
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
-
 }

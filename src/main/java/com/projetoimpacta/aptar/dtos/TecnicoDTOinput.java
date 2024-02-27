@@ -1,8 +1,8 @@
 package com.projetoimpacta.aptar.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.projetoimpacta.aptar.domain.Empresa;
 import com.projetoimpacta.aptar.domain.Endereco;
+import com.projetoimpacta.aptar.domain.Tecnico;
 import com.projetoimpacta.aptar.domain.enums.Perfil;
 import jakarta.validation.constraints.NotNull;
 
@@ -13,7 +13,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class EmpresaDTO implements Serializable {
+public class TecnicoDTOinput implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
@@ -32,15 +32,15 @@ public class EmpresaDTO implements Serializable {
 
     @JsonFormat(pattern = "dd/MM/yyyy")
     protected LocalDate dataCriacao = LocalDate.now();
-    @NotNull(message = "O campo CNPJ é requerido")
-    private String cnpj;
+    @NotNull(message = "O campo CPF é requerido")
+    private String cpf;
 
 
-    public EmpresaDTO() {
-        addPerfil(Perfil.EMPRESA);
+    public TecnicoDTOinput() {
+        addPerfil(Perfil.TECNICO);
     }
 
-    public EmpresaDTO(Empresa obj) {
+    public TecnicoDTOinput(Tecnico obj) {
         this.id = obj.getId();
         this.nome = obj.getNome();
         this.email = obj.getEmail();
@@ -49,7 +49,7 @@ public class EmpresaDTO implements Serializable {
         this.endereco = obj.getEndereco();
         this.perfis = obj.getPerfis().stream().map(Perfil::getCodigo).collect(Collectors.toSet());
         this.dataCriacao = obj.getDataCriacao();
-        this.cnpj = obj.getCnpj();
+        this.cpf = obj.getCpf();
     }
 
 
@@ -109,10 +109,20 @@ public class EmpresaDTO implements Serializable {
         this.dataCriacao = dataCriacao;
     }
 
-    public String getCnpj() {
-        return cnpj;
+    public String getCpf() {
+        return cpf;
     }
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+
+    public static TecnicoDTOinput criarDTOOmitindoInformacoesSensiveis(Tecnico obj) {
+        TecnicoDTOinput dto = new TecnicoDTOinput();
+        dto.setNome(obj.getNome());
+        dto.setCpf(obj.getCpf());
+        dto.setTelefone(obj.getTelefone());
+        dto.setEndereco(obj.getEndereco());
+        return dto;
     }
 }
