@@ -25,6 +25,12 @@ public class ChamadoResource {
         return ResponseEntity.ok().body(new ChamadoDTOinput_out(obj));
     }
 
+    @GetMapping(value = "os/{numeroChamado}")
+    public ResponseEntity<ChamadoDTOinput_out> findByNumeroChamado(@PathVariable String numeroChamado) {
+        Chamado obj = service.findByNumeroChamado(numeroChamado);
+        return ResponseEntity.ok().body(new ChamadoDTOinput_out(obj));
+    }
+
     @GetMapping
     public ResponseEntity<List<ChamadoDTOinput_out>> findAll() {
         List<Chamado> list = service.findAll();

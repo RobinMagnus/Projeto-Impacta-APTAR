@@ -34,6 +34,11 @@ public class ChamadoService {
         return obj.orElseThrow(() -> new ObjectnotFoundException("Chamado não encontrado! Id: " + id));
     }
 
+    public Chamado findByNumeroChamado(String numeroChamado) {
+        Optional<Chamado> obj = repository.findByNumeroChamado(numeroChamado);
+        return obj.orElseThrow(() -> new ObjectnotFoundException("Chamado não encontrado!"));
+    }
+
     public List<Chamado> findAll() {
         return repository.findAll();
     }
