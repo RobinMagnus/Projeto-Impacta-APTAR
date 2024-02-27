@@ -49,6 +49,27 @@
 					"response": []
 				},
 				{
+					"name": "findByCpf",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/tecnicos/search/55656833003",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tecnicos",
+								"search",
+								"55656833003"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "create",
 					"request": {
 						"method": "POST",
@@ -170,6 +191,27 @@
 					"response": []
 				},
 				{
+					"name": "findByCnpj",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/empresas/search/69008832000150",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"empresas",
+								"search",
+								"69008832000150"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "create",
 					"request": {
 						"method": "POST",
@@ -285,6 +327,27 @@
 							"path": [
 								"chamados",
 								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findByNumeroChamado",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/chamados/os/000015",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"chamados",
+								"os",
+								"000015"
 							]
 						}
 					},
