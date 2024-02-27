@@ -1,7 +1,7 @@
 package com.projetoimpacta.aptar.services;
 
 import com.projetoimpacta.aptar.domain.Empresa;
-import com.projetoimpacta.aptar.dtos.EmpresaDTO;
+import com.projetoimpacta.aptar.dtos.EmpresaDTOinput;
 import com.projetoimpacta.aptar.repositories.EmpresaRepository;
 import com.projetoimpacta.aptar.services.exceptions.ObjectnotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,18 +23,23 @@ public class EmpresaService {
         return obj.orElseThrow(() -> new ObjectnotFoundException("Empresa não encontrada! Id: " + id));
     }
 
+    public Empresa findByCnpj(String cnpj) {
+        Optional<Empresa> obj = repository.findByCnpj(cnpj);
+        return obj.orElseThrow(() -> new ObjectnotFoundException("Empresa não encontrada!"));
+    }
+
     public List<Empresa> findAll() {
         return repository.findAll();
     }
 
-    public Empresa create(EmpresaDTO objDTO) {
+    public Empresa create(EmpresaDTOinput objDTO) {
         objDTO.setId(null);
         validaPorCnpjeEmail(objDTO);
         Empresa newObj = new Empresa(objDTO);
         return repository.save(newObj);
     }
 
-    public Empresa update(Long id, EmpresaDTO objDTO) {
+    public Empresa update(Long id, EmpresaDTOinput objDTO) {
         objDTO.setId(id);
         findById(id);
         Empresa obj;
@@ -51,7 +56,7 @@ public class EmpresaService {
         repository.deleteById(id);
     }
 
-    private void validaPorCnpjeEmail(EmpresaDTO objDTO) {
+    private void validaPorCnpjeEmail(EmpresaDTOinput objDTO) {
 
         Optional<Empresa> obj = repository.findByCnpj(objDTO.getCnpj());
         if (obj.isPresent() && obj.get().getId() != objDTO.getId()) {

@@ -1,7 +1,8 @@
 package com.projetoimpacta.aptar.resources;
 
 import com.projetoimpacta.aptar.domain.Empresa;
-import com.projetoimpacta.aptar.dtos.EmpresaDTO;
+import com.projetoimpacta.aptar.dtos.EmpresaDTOinput;
+import com.projetoimpacta.aptar.dtos.EmpresaDTOout;
 import com.projetoimpacta.aptar.services.EmpresaService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,33 +22,39 @@ public class EmpresaResource {
     private EmpresaService service;
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<EmpresaDTO> findById(@PathVariable Long id) {
+    public ResponseEntity<EmpresaDTOout> findById(@PathVariable Long id) {
         Empresa obj = service.findById(id);
-        return ResponseEntity.ok().body(new EmpresaDTO(obj));
+        return ResponseEntity.ok().body(new EmpresaDTOout(obj));
+    }
+
+    @GetMapping(value = "search/{cnpj}")
+    public ResponseEntity<EmpresaDTOout> findByCnpj(@PathVariable String cnpj) {
+        Empresa obj = service.findByCnpj(cnpj);
+        return ResponseEntity.ok().body(new EmpresaDTOout(obj));
     }
 
     @GetMapping
-    public ResponseEntity<List<EmpresaDTO>> findAll() {
+    public ResponseEntity<List<EmpresaDTOout>> findAll() {
         List<Empresa> list = service.findAll();
-        List<EmpresaDTO> listDTO = list.stream().map(EmpresaDTO::new).collect(Collectors.toList());
+        List<EmpresaDTOout> listDTO = list.stream().map(EmpresaDTOout::new).collect(Collectors.toList());
         return ResponseEntity.ok().body(listDTO);
     }
 
     @PostMapping
-    public ResponseEntity<EmpresaDTO> create(@Valid @RequestBody EmpresaDTO objDTO) {
+    public ResponseEntity<EmpresaDTOinput> create(@Valid @RequestBody EmpresaDTOinput objDTO) {
         Empresa newObj = service.create(objDTO);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<EmpresaDTO> update(@PathVariable Long id, @Valid @RequestBody EmpresaDTO objDTO) {
+    public ResponseEntity<EmpresaDTOinput> update(@PathVariable Long id, @Valid @RequestBody EmpresaDTOinput objDTO) {
         Empresa obj = service.update(id, objDTO);
-        return ResponseEntity.ok().body(new EmpresaDTO(obj));
+        return ResponseEntity.ok().body(new EmpresaDTOinput(obj));
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<EmpresaDTO> delete(@PathVariable Long id) {
+    public ResponseEntity<EmpresaDTOinput> delete(@PathVariable Long id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
