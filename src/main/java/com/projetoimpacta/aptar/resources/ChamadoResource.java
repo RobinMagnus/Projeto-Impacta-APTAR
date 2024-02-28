@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/chamados")
@@ -18,6 +20,7 @@ public class ChamadoResource {
 
     @Autowired
     private ChamadoService service;
+
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<ChamadoDTOinput_out> findById(@PathVariable Long id) {
@@ -50,4 +53,17 @@ public class ChamadoResource {
         Chamado newObj = service.update(id, objDTO);
         return ResponseEntity.ok().body(new ChamadoDTOinput_out(newObj));
     }
+
+    @GetMapping(value = "/empresa/{id}")
+    public ResponseEntity<List<ChamadoDTOinput_out>> findByEmpresaId(@PathVariable Long id) {
+        List<ChamadoDTOinput_out> chamadosDTO = service.findByEmpresaId(id);
+        return ResponseEntity.ok().body(chamadosDTO);
+    }
+    @GetMapping(value = "/tecnico/{id}")
+    public ResponseEntity<List<ChamadoDTOinput_out>> findByTecnicoId(@PathVariable Long id) {
+        List<ChamadoDTOinput_out> chamadosDTO = service.findByTecnicoId(id);
+        return ResponseEntity.ok().body(chamadosDTO);
+    }
+
+
 }
