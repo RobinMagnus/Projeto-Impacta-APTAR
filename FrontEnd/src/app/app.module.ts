@@ -15,6 +15,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {MatInputModule} from '@angular/material/input';
 import {MatTabsModule} from "@angular/material/tabs";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import {MatTabsModule} from "@angular/material/tabs";
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     MatCardModule,
     MatButtonModule,
     AppRoutingModule,
