@@ -1,4 +1,4 @@
-![logoAptar.png](..%2F..%2F..%2F..%2F..%2FDesktop%2FlogoAptar.png)
+![logoAptar](https://github.com/CodeByTeusSilva/Projeto-Impacta-APTAR/assets/99133494/87d8eb2b-ccfe-406e-9670-d21737091ec2)
 
 Este projeto tem como objetivo, criar uma aplicação que ira auxiliar tecnicos e empresas, nas adequações elétricas em todo Brasil. 
 
