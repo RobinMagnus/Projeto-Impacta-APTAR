@@ -29,10 +29,42 @@
 .container {
   text-align: center;
   align-items: center;
-  margin: 30px;
   justify-content: space-between;
 
 }
-.input{
-  width: 100%;
+.input {
+  width: calc(100% - 8px); /* Ajustando a largura do input para a largura total da coluna menos a margem */
+  margin-right: 8px; /* Adicionando margem à direita do input */
+  margin-bottom: 8px; /* Adicionando margem abaixo do input */
 }
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.col-4 {
+  flex: 0 0 33.3333%;
+  max-width: 33.3333%;
+}
+
+.col-8 {
+  flex: 0 0 66.6666%;
+  max-width: 66.6666%;
+}
+
+.col-6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.col-2 {
+  flex: 0 0 16.6666%;
+  max-width: 16.6666%;
+}
+
+
+
+
+

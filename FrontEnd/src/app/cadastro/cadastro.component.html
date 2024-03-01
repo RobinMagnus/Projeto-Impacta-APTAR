@@ -25,29 +25,47 @@
                 </mat-form-field>
 
                 <div formGroupName="endereco">
-                  <mat-form-field class="input">
-                    <input matInput placeholder="CEP" formControlName="cep">
-                  </mat-form-field>
-                  <mat-form-field class="input">
-                    <input matInput placeholder="Logradouro" formControlName="logradouro">
-                  </mat-form-field>
-                  <mat-form-field class="input">
-                    <input matInput placeholder="Numero" formControlName="numero">
-                  </mat-form-field>
-                  <mat-form-field class="input">
-                    <input matInput placeholder="Complemento" formControlName="complemento">
-                  </mat-form-field>
-                  <mat-form-field class="input">
-                    <input matInput placeholder="Bairro" formControlName="bairro">
-                  </mat-form-field>
-                  <mat-form-field class="input">
-                    <input matInput placeholder="Cidade" formControlName="cidade">
-                  </mat-form-field>
-                  <mat-form-field class="input">
-                    <input matInput placeholder="UF" formControlName="estado">
-                  </mat-form-field>
-
-
+                  <div class="row">
+                    <div class="col-4">
+                      <mat-form-field class="input">
+                        <input matInput placeholder="CEP" formControlName="cep">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-8">
+                      <mat-form-field class="input">
+                        <input matInput placeholder="Logradouro" formControlName="logradouro">
+                      </mat-form-field>
+                    </div>
+                  </div>
+                    <div class="row">
+                      <div class="col-4">
+                        <mat-form-field class="input">
+                          <input matInput placeholder="Numero" formControlName="numero">
+                        </mat-form-field>
+                      </div>
+                      <div class="col-8">
+                        <mat-form-field class="input">
+                          <input matInput placeholder="Complemento" formControlName="complemento">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-4">
+                        <mat-form-field class="input">
+                          <input matInput placeholder="Bairro" formControlName="bairro">
+                        </mat-form-field>
+                      </div>
+                      <div class="col-6">
+                        <mat-form-field class="input">
+                          <input matInput placeholder="Cidade" formControlName="cidade">
+                        </mat-form-field>
+                      </div>
+                      <div class="col-2">
+                        <mat-form-field class="input">
+                          <input matInput placeholder="UF" formControlName="estado">
+                        </mat-form-field>
+                      </div>
+                    </div>
                 </div>
 
                 <div class="container">
@@ -79,7 +97,90 @@
 
 
     <mat-tab label="EMPRESA">
+      <div class="center-container">
+        <div class="container">
+          <h2>Cadastro</h2>
+          <mat-card-content>
+            <form [formGroup]="form" class="min-width">
+              <mat-form-field class="input">
+                <input matInput placeholder="Nome" formControlName="nome">
+              </mat-form-field>
 
+              <mat-form-field class="input">
+                <input matInput placeholder="CNPJ" formControlName="cnpj">
+              </mat-form-field>
+
+              <mat-form-field class="input">
+                <input matInput placeholder="Telefone" formControlName="telefone">
+              </mat-form-field>
+
+              <div formGroupName="endereco">
+                <div class="row">
+                  <div class="col-4">
+                    <mat-form-field class="input">
+                      <input matInput placeholder="CEP" formControlName="cep">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-8">
+                    <mat-form-field class="input">
+                      <input matInput placeholder="Logradouro" formControlName="logradouro">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-4">
+                    <mat-form-field class="input">
+                      <input matInput placeholder="Numero" formControlName="numero">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-8">
+                    <mat-form-field class="input">
+                      <input matInput placeholder="Complemento" formControlName="complemento">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-4">
+                    <mat-form-field class="input">
+                      <input matInput placeholder="Bairro" formControlName="bairro">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-6">
+                    <mat-form-field class="input">
+                      <input matInput placeholder="Cidade" formControlName="cidade">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-2">
+                    <mat-form-field class="input">
+                      <input matInput placeholder="UF" formControlName="estado">
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+
+              <div class="container">
+                <h2>INFORMAÇÕES DE LOGIN</h2>
+                <mat-form-field class="input">
+                  <input matInput placeholder="Email" formControlName="email">
+                </mat-form-field>
+
+                <mat-form-field class="input">
+                  <input matInput placeholder="Senha" formControlName="senha">
+                </mat-form-field>
+
+                <mat-form-field class="input">
+                  <input matInput placeholder="Confirmar senha" formControlName="confirmarsenha">
+                </mat-form-field>
+
+              </div>
+
+            </form>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button color="primary" (click)="onSubmit()">Entre</button>
+          </mat-card-actions>
+        </div>
+      </div>
     </mat-tab>
   </mat-tab-group>
 
