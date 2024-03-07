@@ -6,16 +6,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
-import {MatCardModule} from "@angular/material/card";
-import {MatButtonModule} from "@angular/material/button";
 import { AppRoutingModule } from './app-routing.module';
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {RouterModule} from "@angular/router";
-import {MatInputModule} from '@angular/material/input';
-import {MatTabsModule} from "@angular/material/tabs";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import { HttpClientModule} from "@angular/common/http";
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {CadastroModule} from "./cadastro/cadastro.module";
+import {AppMaterialModule} from "./shared/app-material/app-material.module";
+
 
 
 @NgModule({
@@ -23,23 +20,19 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     AppComponent,
     HomeComponent,
     LoginComponent,
-    CadastroComponent
+    CadastroComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatCardModule,
-    MatButtonModule,
+    FlexLayoutModule,
     AppRoutingModule,
-    MatToolbarModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatTabsModule
+    CadastroModule,
+    AppMaterialModule,
   ],
   exports: [],
   providers: [],

@@ -1,3 +1,5 @@
+import {Endereco} from "./endereco";
+
 export interface TecnicoDTOinput {
   id?: number;
   nome: string;
@@ -10,6 +12,4 @@ export interface TecnicoDTOinput {
   cpf: string;
 }
 
-interface Endereco {
-  // Defina a estrutura do endereço aqui
-}
+

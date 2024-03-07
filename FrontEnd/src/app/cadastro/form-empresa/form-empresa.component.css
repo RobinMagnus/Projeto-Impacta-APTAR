@@ -35,17 +35,5 @@
 .input {
   width: calc(100% - 8px);
   margin-right: 8px;
-  margin-bottom: 8px;
-}
-
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 16px;
-}
-
-
-
-
-
+  }
 
