@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.projetoimpacta.aptar.domain.enums.Prioridade;
 import com.projetoimpacta.aptar.domain.enums.Status;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.FutureOrPresent;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -18,6 +19,7 @@ public class Chamado implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(updatable = false)
     private String numeroChamado;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
