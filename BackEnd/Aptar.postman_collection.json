@@ -409,6 +409,48 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "ChamadosPorEmpresa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/chamados/empresa/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"chamados",
+								"empresa",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ChamadosPorTecnico",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/chamados/tecnico/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"chamados",
+								"tecnico",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}

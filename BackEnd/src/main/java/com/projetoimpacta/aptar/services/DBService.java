@@ -87,9 +87,19 @@ public class DBService {
                 tec5, emp4);
         Chamado c5 = new Chamado(null, Prioridade.ALTA, Status.ABERTO, "Chamado 05", "Quinto Chamado",
                 new Endereco("Rua Pamplona", 567, null, "54321098", "Jardim Paulista", "São Paulo", "SP"),
-                tec5, emp5);
+                tec1, emp5);
+        // Teste - Retornar chamados por empresas
+        Chamado c6 = new Chamado(null, Prioridade.MEDIA, Status.EM_ANDAMENTO, "Chamado 01", "Primeiro Chamado",
+                new Endereco("Rua Pinheiros", 123, null, "01234567", "Paulista", "São Paulo", "SP"),
+                tec1, emp1);
+        Chamado c7 = new Chamado(null, Prioridade.ALTA, Status.ENCERRADO, "Chamado 01", "Primeiro Chamado",
+                new Endereco("Rua Pinheiros", 123, null, "01234567", "Paulista", "São Paulo", "SP"),
+                tec1, emp1);
+        Chamado c8 = new Chamado(null, Prioridade.MEDIA, Status.ABERTO, "Chamado 01", "Primeiro Chamado",
+                new Endereco("Rua Pinheiros", 123, null, "01234567", "Paulista", "São Paulo", "SP"),
+                tec1, emp1);
 
-        chamadoRepository.saveAll(List.of(c1, c2, c3, c4, c5));
+        chamadoRepository.saveAll(List.of(c1, c2, c3, c4, c5, c6, c7, c8));
 
     }
 

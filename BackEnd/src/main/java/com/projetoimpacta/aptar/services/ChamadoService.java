@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,6 +29,7 @@ public class ChamadoService {
 
     @Autowired
     private EmpresaService empresaService;
+
 
     public Chamado findById(Long id) {
         Optional<Chamado> obj = repository.findById(id);
@@ -80,5 +82,26 @@ public class ChamadoService {
         return chamado;
     }
 
+    public List<ChamadoDTOinput_out> findByEmpresaId(Long id) {
+        List<Chamado> chamados = repository.findAll();
+        List<ChamadoDTOinput_out> chamadosDTO = new ArrayList<>();
+        for (Chamado chamado : chamados) {
+            if (chamado.getEmpresa().getId().equals(id)) {
+                chamadosDTO.add(new ChamadoDTOinput_out(chamado));
+            }
+        }
+        return chamadosDTO;
+    }
+
+    public List<ChamadoDTOinput_out> findByTecnicoId(Long id) {
+        List<Chamado> chamados = repository.findAll();
+        List<ChamadoDTOinput_out> chamadosDTO = new ArrayList<>();
+        for (Chamado chamado : chamados) {
+            if (chamado.getTecnico().getId().equals(id)) {
+                chamadosDTO.add(new ChamadoDTOinput_out(chamado));
+            }
+        }
+        return chamadosDTO;
+    }
 
 }
