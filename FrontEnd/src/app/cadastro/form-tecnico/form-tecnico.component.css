@@ -1,0 +1,70 @@
+.mat-tab-group {
+  margin-bottom: 48px;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.toolbar-content {
+  width: auto;
+  height: 70%;
+}
+
+.toolbar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.center-container {
+  max-width: 40%;
+  margin: 2em auto;
+  align-items: center;
+  justify-content: center;
+
+}
+.container {
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+
+}
+.input {
+  width: calc(100% - 8px); /* Ajustando a largura do input para a largura total da coluna menos a margem */
+  margin-right: 8px; /* Adicionando margem à direita do input */
+  margin-bottom: 8px; /* Adicionando margem abaixo do input */
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.col-4 {
+  flex: 0 0 33.3333%;
+  max-width: 33.3333%;
+}
+
+.col-8 {
+  flex: 0 0 66.6666%;
+  max-width: 66.6666%;
+}
+
+.col-6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.col-2 {
+  flex: 0 0 16.6666%;
+  max-width: 16.6666%;
+}
+
+
+
+
+
