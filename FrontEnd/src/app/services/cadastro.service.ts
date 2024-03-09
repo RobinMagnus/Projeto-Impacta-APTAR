@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable, of} from 'rxjs';
-import { TecnicoDTOinput } from '../models/TecnicoDTOinput';
-import {FormControl} from "@angular/forms";
+import {AbstractControl, FormControl, ValidatorFn} from "@angular/forms";
+import {TecnicoDtoinput} from "../models/tecnico-dtoinput";
+import {EmpresaDTOinput} from "../models/empresa-dtoinput";
 
 @Injectable({
   providedIn: 'root'
@@ -10,21 +11,30 @@ import {FormControl} from "@angular/forms";
 export class CadastroService {
   private apiUrl = 'http://localhost:8080/tecnicos';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
-  save(tecnicoData: TecnicoDTOinput): Observable<any> {
+  saveTec(tecnicoData: TecnicoDtoinput): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
 
-    return this.http.post(this.apiUrl, tecnicoData, { headers });
+    return this.http.post(this.apiUrl, tecnicoData, {headers});
   }
 
-  static cepValidator(control: FormControl){
+  saveEmp(empData: EmpresaDTOinput): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    return this.http.post(this.apiUrl, empData, {headers});
+  }
+
+  static cepValidator(control: FormControl) {
     const cep = control.value;
-    if(cep != null && !cep.isEmpty){
-      const validacep =  /^[0-9]{5}-[0-9]{3}$/;
-      return validacep.test(cep) ? null : { cepInvalido : true };
+    if (cep != null && !cep.isEmpty) {
+      const validacep = /^[0-9]{5}-[0-9]{3}$/;
+      return validacep.test(cep) ? null : {cepInvalido: true};
     }
     return null;
   }
@@ -42,5 +52,12 @@ export class CadastroService {
     return of({});
   }
 
-}
+  passwordMatchValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const password = control.get('senha');
+      const confirmPassword = control.get('confirmarsenha');
 
+      return password && confirmPassword && password.value === confirmPassword.value ? null : {passwordMismatch: true};
+    };
+  }
+}

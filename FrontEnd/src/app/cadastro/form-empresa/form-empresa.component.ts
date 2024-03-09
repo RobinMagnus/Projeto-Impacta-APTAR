@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CadastroService} from "../../services/cadastro.service";
-import {TecnicoDTOinput} from "../../models/TecnicoDTOinput";
+import {EmpresaDTOinput} from "../../models/empresa-dtoinput";
+
 
 @Component({
   selector: 'app-form-empresa',
@@ -38,17 +39,42 @@ export class FormEmpresaComponent {
     });
   }
 
-  onSubmit() {
+  onSubmitEmp() {
     console.log(this.form)
-    const tecnicoData: TecnicoDTOinput = this.form.value;
-    this.service.save(tecnicoData).subscribe(
+    const empresaData: EmpresaDTOinput = this.form.value;
+    this.service.saveEmp(empresaData).subscribe(
       response => {
-        console.log('Técnico salvo com sucesso!', response);
+        console.log('Empresa salva com sucesso!', response);
       },
       error => {
-        console.error('Erro ao salvar técnico:', error);
+        console.error('Erro ao salvar empresa', error);
       }
     );
   }
+
+  consultaCEP() {
+
+    const cep = this.form.get('endereco.cep')?.value;
+    console.log(cep);
+    if (cep != null && !cep.isEmpty) {
+      this.service.consultaCEP(cep)?.subscribe((dados:any) => {
+        this.populaDadosform(dados);
+      });
+    }
+  }
+
+  populaDadosform(dados: any) {
+    console.log(dados)
+    this.form.patchValue({
+      endereco: {
+        logradouro: dados.logradouro,
+        bairro: dados.bairro,
+        cidade: dados.localidade,
+        estado: dados.uf
+      }
+    })
+  }
+
+
 
 }

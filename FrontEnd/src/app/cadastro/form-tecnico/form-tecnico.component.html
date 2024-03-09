@@ -108,8 +108,11 @@
           <mat-form-field class="input">
             <input matInput placeholder="Confirmar senha" formControlName="confirmarsenha">
           </mat-form-field>
-          <mat-error *ngIf="form.get('confirmarsenha')?.invalid && (form.get('confirmarsenha')?.dirty || form.get('confirmarsenha')?.touched)">
-            Senhas não coincidem.
+          <mat-error *ngIf="form.get('confirmarsenha')?.hasError('required')">
+            Confirmar senha é obrigatória.
+          </mat-error>
+          <mat-error *ngIf="form.hasError('passwordMismatch')">
+            As senhas não correspondem.
           </mat-error>
 
         </div>
@@ -117,7 +120,7 @@
       </form>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="onSubmit()">Entre</button>
+      <button mat-raised-button color="primary" (click)="onSubmitTec()">Entre</button>
     </mat-card-actions>
   </div>
 </div>

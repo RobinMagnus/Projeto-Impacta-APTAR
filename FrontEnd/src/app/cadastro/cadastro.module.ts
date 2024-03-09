@@ -7,7 +7,6 @@ import { FormTecnicoComponent } from './form-tecnico/form-tecnico.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { FormEmpresaComponent } from './form-empresa/form-empresa.component';
 
-
 @NgModule({
   declarations: [
     FormTecnicoComponent,

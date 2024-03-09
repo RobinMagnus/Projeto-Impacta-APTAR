@@ -19,7 +19,7 @@
           <div class="input-group" fxLayout="row" fxLayoutGap="16px">
             <div fxFlex="33%">
               <mat-form-field class="input">
-                <input matInput placeholder="CEP" formControlName="cep">
+                <input matInput placeholder="CEP" formControlName="cep" (blur)="consultaCEP()">
               </mat-form-field>
             </div>
             <div fxFlex="67%">
@@ -78,7 +78,7 @@
       </form>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="onSubmit()">Entre</button>
+      <button mat-raised-button color="primary" (click)="onSubmitEmp()">Entre</button>
     </mat-card-actions>
   </div>
 </div>

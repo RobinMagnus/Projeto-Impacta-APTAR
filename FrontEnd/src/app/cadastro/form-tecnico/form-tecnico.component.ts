@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators} from "@angular/forms";
 import {CadastroService} from "../../services/cadastro.service";
-import {TecnicoDTOinput} from "../../models/TecnicoDTOinput";
+import {TecnicoDtoinput} from "../../models/tecnico-dtoinput";
+import {distinctUntilChanged, empty, switchMap, tap} from "rxjs";
 
 @Component({
   selector: 'app-form-tecnico',
@@ -31,17 +32,26 @@ export class FormTecnicoComponent {
       }),
       email: [null, Validators.required],
       senha: [null, Validators.required],
-      confirmarsenha: [null, Validators.required],
-
-
+      confirmarsenha: [null, [Validators.required, service.passwordMatchValidator]]
 
     });
+
+    this.form.get('endereco.cep')?.statusChanges
+      .pipe(
+        distinctUntilChanged(),
+        tap((value: any) => console.log('status CEP:', value)),
+        switchMap((status: any) => status === 'VALID' ?
+          this.service.consultaCEP(this.form.get('endereco.cep')?.value)
+          : empty()
+        )
+      )
+      .subscribe((dados: any) => dados ? this.populaDadosform(dados) : {});
   }
 
-  onSubmit() {
+  onSubmitTec() {
     console.log(this.form)
-    const tecnicoData: TecnicoDTOinput = this.form.value;
-    this.service.save(tecnicoData).subscribe(
+    const tecnicoData: TecnicoDtoinput = this.form.value;
+    this.service.saveTec(tecnicoData).subscribe(
       response => {
         console.log('Técnico salvo com sucesso!', response);
       },
@@ -56,7 +66,7 @@ export class FormTecnicoComponent {
     const cep = this.form.get('endereco.cep')?.value;
     console.log(cep);
     if (cep != null && !cep.isEmpty) {
-      this.service.consultaCEP(cep)?.subscribe((dados:any) => {
+      this.service.consultaCEP(cep)?.subscribe((dados: any) => {
         this.populaDadosform(dados);
       });
     }
@@ -73,6 +83,5 @@ export class FormTecnicoComponent {
       }
     })
   }
-
 
 }
