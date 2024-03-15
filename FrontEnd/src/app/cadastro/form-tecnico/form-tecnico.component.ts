@@ -1,5 +1,13 @@
 import { Component } from '@angular/core';
-import {AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators} from "@angular/forms";
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ValidationErrors,
+  ValidatorFn,
+  Validators
+} from "@angular/forms";
 import {CadastroService} from "../../services/cadastro.service";
 import {TecnicoDtoinput} from "../../models/tecnico-dtoinput";
 import {distinctUntilChanged, empty, switchMap, tap} from "rxjs";
@@ -19,20 +27,20 @@ export class FormTecnicoComponent {
   ) {
     this.form = this.formBuilder.group({
       nome: [null, Validators.required],
-      cpf: [null, Validators.required],
+      cpf: [null, [Validators.required, this.validarCPF.bind(this)]],
       telefone: [null, Validators.required],
       endereco: this.formBuilder.group({
         cep: [null, [Validators.required, CadastroService.cepValidator]],
         logradouro: [null, Validators.required],
         numero: [null, Validators.required],
-        complemento: [null],
+        complemento: [null, Validators.required],
         bairro: [null, Validators.required],
         cidade: [null, Validators.required],
         estado: [null, Validators.required]
       }),
-      email: [null, Validators.required],
+      email: [null, [Validators.required, Validators.email]],
       senha: [null, Validators.required],
-      confirmarsenha: [null, [Validators.required, service.passwordMatchValidator]]
+      confirmarSenha: [null, [Validators.required, this.equalsTo('senha')]]
 
     });
 
@@ -84,4 +92,25 @@ export class FormTecnicoComponent {
     })
   }
 
+  validarCPF(control: AbstractControl): ValidationErrors | null {
+    const  cpf = control.value;
+    if (cpf == null) {
+      return null;
+    }
+    const cpfValido = this.service.validarCPF(cpf);
+    return cpfValido ? null : { 'cpfInvalid': true };
+  }
+
+  equalsTo(otherField: string): ValidatorFn {
+    return (formControl: AbstractControl) => {
+      const field = formControl.root.get(otherField) as AbstractControl;
+      if (field && field.value !== formControl.value) {
+        return {equalsTo: true};
+      }
+      return null;
+    };
+
+  }
 }
+
+
