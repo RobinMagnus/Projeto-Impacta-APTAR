@@ -9,8 +9,8 @@ import {EmpresaDTOinput} from "../models/empresa-dtoinput";
   providedIn: 'root'
 })
 export class CadastroService {
-  private apiUrl = 'http://localhost:8080/tecnicos';
-
+  private urlTec = 'http://localhost:8080/tecnicos';
+  private urlEmp = 'http://localhost:8080/empresas';
   constructor(private http: HttpClient) {
   }
 
@@ -19,7 +19,7 @@ export class CadastroService {
       'Content-Type': 'application/json'
     });
 
-    return this.http.post(this.apiUrl, tecnicoData, {headers});
+    return this.http.post(this.urlTec, tecnicoData, {headers});
   }
 
   saveEmp(empData: EmpresaDTOinput): Observable<any> {
@@ -27,7 +27,7 @@ export class CadastroService {
       'Content-Type': 'application/json'
     });
 
-    return this.http.post(this.apiUrl, empData, {headers});
+    return this.http.post(this.urlEmp, empData, {headers});
   }
 
   static cepValidator(control: FormControl) {
