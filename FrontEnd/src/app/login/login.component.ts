@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {CadastroService} from "../services/cadastro.service";
+import { AuthService } from './auth.service';
+import { Usuario } from './usuario';
 
 @Component({
   selector: 'app-login',
@@ -8,20 +10,17 @@ import {CadastroService} from "../services/cadastro.service";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  form: FormGroup;
-  constructor(private formBuilder: FormBuilder,
-              private service: CadastroService) {
-    this.form = this.formBuilder.group( {
-      nome: [null],
-      email: [null]
-    });
+
+  public usuario: Usuario = {email:'', senha:''};
+  
+  constructor(private authService: AuthService
+  ) {
+    
   }
 
   onSubmit(){
-    console.log("onCancel")
-
-    /*this.service.save(this.form.value);*/
-
+    console.log(this.usuario);
+    this.authService.fazerLogin(this.usuario);
   }
 
 

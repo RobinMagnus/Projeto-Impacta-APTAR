@@ -12,6 +12,9 @@ import { HttpClientModule} from "@angular/common/http";
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {CadastroModule} from "./cadastro/cadastro.module";
 import {AppMaterialModule} from "./shared/app-material/app-material.module";
+import { ConsultasModule } from './consultas/consultas.module';
+import { AuthService } from './login/auth.service';
+
 
 
 
@@ -20,7 +23,7 @@ import {AppMaterialModule} from "./shared/app-material/app-material.module";
     AppComponent,
     HomeComponent,
     LoginComponent,
-    CadastroComponent,
+    CadastroComponent
   ],
   imports: [
     BrowserModule,
@@ -33,9 +36,10 @@ import {AppMaterialModule} from "./shared/app-material/app-material.module";
     AppRoutingModule,
     CadastroModule,
     AppMaterialModule,
+    ConsultasModule
   ],
   exports: [],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
