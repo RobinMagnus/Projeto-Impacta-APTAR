@@ -1,15 +1,18 @@
-<mat-sidenav-container class="sidenavbar-consultas">
-    <mat-sidenav class="sidenav-menu" mode="side" opened>
-        <mat-nav-list>
-            <mat-list-item class="custom-list-item">
-                <a routerLink="/cadastro">Perfil</a>
-            </mat-list-item>
-            <mat-list-item class="custom-list-item">
-                <a routerLink="/home">Consultas</a>
-            </mat-list-item>     
-        </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-        <!-- Conteúdo da página aqui -->
-    </mat-sidenav-content>
-</mat-sidenav-container>
+
+<div class="container">
+    <div class="content">
+    <nav class="sidenav">
+        <ul>
+            <li class="custom-list-item">
+                <a (click)="edit()">Perfil</a>
+            </li>
+            <li class="custom-list-item">
+                <a href="/consultaEmpresa">Consultas</a>
+            </li>
+        </ul>
+    </nav>
+    <main class="main-content">
+        <router-outlet></router-outlet>
+    </main>
+</div>
+</div>

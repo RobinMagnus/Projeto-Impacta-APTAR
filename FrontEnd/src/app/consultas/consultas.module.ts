@@ -6,14 +6,17 @@ import { ConsultasComponent } from './consultas.component';
 import { CadastroModule } from '../cadastro/cadastro.module';
 import { ConsultaEmpresaComponent } from './consulta-empresa/consulta-empresa.component';
 import { ConsultaRoutingModule } from './consultas.routing.module';
+import { TabelaEmpresaComponent } from './tabela-empresa/tabela-empresa.component';
+import { TabelaTecnicoComponent } from './tabela-tecnico/tabela-tecnico.component';
 
 
 
 @NgModule({
   declarations: [
     ConsultaTecnicoComponent,
-    ConsultasComponent,
     ConsultaEmpresaComponent,
+    TabelaEmpresaComponent,
+    TabelaTecnicoComponent
     
   ],
   imports: [

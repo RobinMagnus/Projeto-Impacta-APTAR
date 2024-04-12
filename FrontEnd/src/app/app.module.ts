@@ -14,6 +14,7 @@ import {CadastroModule} from "./cadastro/cadastro.module";
 import {AppMaterialModule} from "./shared/app-material/app-material.module";
 import { ConsultasModule } from './consultas/consultas.module';
 import { AuthService } from './login/auth.service';
+import { ConsultasComponent } from './consultas/consultas.component';
 
 
 
@@ -23,7 +24,8 @@ import { AuthService } from './login/auth.service';
     AppComponent,
     HomeComponent,
     LoginComponent,
-    CadastroComponent
+    CadastroComponent,
+    ConsultasComponent
   ],
   imports: [
     BrowserModule,

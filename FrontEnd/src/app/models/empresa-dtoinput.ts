@@ -7,5 +7,5 @@ export interface EmpresaDTOinput {
   senha: string;
   telefone: string;
   endereco: Endereco;
-  cpf: string;
+  cnpj: string;
 }
