@@ -17,10 +17,11 @@ const routes: Routes = [
   {path: 'formtecnico', component: FormTecnicoComponent},
   { path: 'formempresa', component: FormEmpresaComponent},  
   { path: 'consultaEmpresa', component: ConsultaEmpresaComponent},
-  { path: 'consultaTecnico', component: ConsultaTecnicoComponent},  
-  { path: 'consultas/:id', 
-  loadChildren: () => import('./consultas/consultas.module').then(m => m.ConsultasModule)
-   },
+  { path: 'consultaTecnico', loadChildren: () => import('./consultas/consultas.module').then(m => m.ConsultasModule)
+},
+  // { path: 'consultas/:id', 
+  // loadChildren: () => import('./consultas/consultas.module').then(m => m.ConsultasModule)
+  //  },
   { path: 'consultas', 
   loadChildren: () => import('./consultas/consultas.module').then(m => m.ConsultasModule)
    },

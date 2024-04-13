@@ -12,8 +12,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  public usuario: Usuario = {email:'', senha:'', id:0};
-  
+ 
   public email: string ='';
   public senha: string = '';
 
@@ -22,12 +21,8 @@ export class LoginComponent {
     
   }
 
-  onSubmit(){
-    this.authService.fazerLogin(this.usuario);    
-  }
-
   login() {
-    this.authService.login(this.email, this.senha).subscribe(
+    this.authService.login(this.email).subscribe(
       (res) => {
         console.log(res)
         let isCPF = false;
@@ -42,10 +37,9 @@ export class LoginComponent {
         }
   
         if (isCPF) {
-          this.router.navigate(['/consultaTecnico']);
-        } else if (isCNPJ) {
-
-          this.router.navigate(['/consultaEmpresa']);
+          this.router.navigate(['consultas', 'consultaTecnico'], { state: { tipoUsuario: res[0].cpf } });
+        } else if (isCNPJ) {  
+          this.router.navigate(['consultas', 'consultaEmpresa'], { state: { tipoUsuario: res[1].cnpj } });
         } else {
         }
       },

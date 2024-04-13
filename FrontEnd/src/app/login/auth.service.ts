@@ -1,4 +1,4 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Input } from '@angular/core';
 import { Usuario } from './usuario';
 import { Router } from '@angular/router';
 import { Form } from '@angular/forms';
@@ -12,36 +12,45 @@ export class AuthService {
   
   usuarioAutenticado:boolean = false;
 
+  @Input() tecnicoEncontrado?:any;
+  empresaEncontrada?:any;
+
   mostrarMenuEmitter = new EventEmitter<boolean>();
+  
 
   constructor(private router: Router,
     private http: HttpClient
   ) { }
 
-  login(email: string, senha: string): Observable<any> {
+  login(email: string): Observable<any> {
     const loginTecnico$ = this.http.get<any>('http://localhost:8080/tecnicos');
     const loginEmpresa$ = this.http.get<any>('http://localhost:8080/empresas');
   
     return forkJoin([loginTecnico$, loginEmpresa$]).pipe(
       tap(([tecnicos, empresas]) => {
-        console.log('Técnicos:', tecnicos);
+        console.log('Tecnicos:', tecnicos);
         console.log('Empresas:', empresas);
       }),
       map(([tecnicos, empresas]) => {
         console.log('Email:', email);
-        console.log('Senha:', senha);
   
-        const tecnico = tecnicos.find((item:any) => item.email === email && item.senha === senha);
-        const empresa = empresas.find((item:any) => item.email === email && item.senha === senha);
+        this.tecnicoEncontrado = tecnicos.find((item:any) => item.email == email);
+        this.empresaEncontrada = empresas.find((item:any) => item.email == email);
   
-        console.log('Técnico encontrado:', tecnico);
-        console.log('Empresa encontrada:', empresa);
+        console.log('Técnico encontrado:', this.tecnicoEncontrado);
+        console.log('Empresa encontrada:', this.empresaEncontrada);
   
-        return [tecnico, empresa];
+        return [this.tecnicoEncontrado, this.empresaEncontrada];
       })
     );
   }
   
+  getTecnicoEncontrado() {
+    return this.tecnicoEncontrado;
+  }
+  getEmpresaEncontrada() {
+    return this.empresaEncontrada;
+  }
   
 
   fazerLogin(usuario:Usuario){

@@ -14,6 +14,7 @@ export class CadastroService {
   constructor(private http: HttpClient) {
   }
 
+  
   saveTec(tecnicoData: TecnicoDtoinput): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'

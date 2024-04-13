@@ -1,18 +1,35 @@
-
 <div class="container">
     <div class="content">
-    <nav class="sidenav">
+      <nav class="sidenav">
         <ul>
+          <!-- Verifica se o tipo de usuário é 'tecnico' para exibir as rotas relacionadas -->
+          <ng-container *ngIf="tecnicoEncontrado">
             <li class="custom-list-item">
-                <a (click)="edit()">Perfil</a>
+              <a [routerLink]="['consultaTecnico', 'formTecnico', tipoUsuario]">Perfil Técnico</a>
             </li>
             <li class="custom-list-item">
-                <a href="/consultaEmpresa">Consultas</a>
+              <a [routerLink]="['consultaTecnico', 'tabTecnico']">Consultas Técnico</a>
             </li>
+          </ng-container>
+          
+          <!-- Verifica se o tipo de usuário é 'empresa' para exibir as rotas relacionadas -->
+          <ng-container *ngIf="empresaEncontrada">
+            <li class="custom-list-item">
+              <a [routerLink]="['consultaEmpresa', 'formEmpresa', tipoUsuario]">Perfil Empresa</a>
+            </li>
+            <li class="custom-list-item">
+              <a [routerLink]="['consultaEmpresa', 'tabEmpresa']">Consultas Empresa</a>
+            </li>
+          </ng-container>
         </ul>
-    </nav>
-    <main class="main-content">
+      </nav>
+      <main class="main-content">
+        <mat-card>
+          <mat-toolbar>Meus dados:</mat-toolbar>
+          
+        </mat-card>
         <router-outlet></router-outlet>
-    </main>
-</div>
-</div>
+      </main>
+    </div>
+  </div>
+  

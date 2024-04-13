@@ -5,15 +5,32 @@ import { FormTecnicoComponent } from '../cadastro/form-tecnico/form-tecnico.comp
 import { FormEmpresaComponent } from '../cadastro/form-empresa/form-empresa.component';
 import { TabelaTecnicoComponent } from './tabela-tecnico/tabela-tecnico.component';
 import { TabelaEmpresaComponent } from './tabela-empresa/tabela-empresa.component';
+import { ConsultaTecnicoComponent } from './consulta-tecnico/consulta-tecnico.component';
+import { ConsultaEmpresaComponent } from './consulta-empresa/consulta-empresa.component';
 
 const routes: Routes = [
-  { path: '', component: ConsultasComponent, children: [
-    { path: 'formEmpresa', component: FormEmpresaComponent },
-    { path: 'formTecnico', component: FormTecnicoComponent },
-    { path: 'tabTecnico', component: TabelaTecnicoComponent },
-    { path: 'tabEmpresa', component: TabelaEmpresaComponent }
-
-  ]},  
+  { 
+    path: '', 
+    component: ConsultasComponent,
+    children: [
+      { 
+        path: 'consultaEmpresa', component: ConsultaEmpresaComponent,
+        children: [
+          { path: 'formEmpresa', component: FormEmpresaComponent },
+          { path: 'formEmpresa/:tipoUsuario', component: FormEmpresaComponent },
+          { path: 'tabEmpresa', component: TabelaEmpresaComponent }
+        ]
+      },
+      {
+        path: 'consultaTecnico', component: ConsultaTecnicoComponent,
+        children: [
+          { path: 'formTecnico', component: FormTecnicoComponent },
+          { path: 'formTecnico/:tipoUsuario', component: FormTecnicoComponent },
+          { path: 'tabTecnico', component: TabelaTecnicoComponent }
+        ]
+      }
+    ]
+  }
 ];
 
 @NgModule({
