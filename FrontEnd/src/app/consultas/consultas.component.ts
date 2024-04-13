@@ -25,11 +25,9 @@ export class ConsultasComponent  {
 
   ngOnInit() {
     this.tipoUsuario = history.state.tipoUsuario;
-    console.log(this.tipoUsuario)
-    const tecnico = false;
-    const empresa = false;
-
-    if (this.tipoUsuario && this.tipoUsuario.length === 9) {
+    console.log('consulta' + this.tipoUsuario)
+  
+    if (this.tipoUsuario && this.tipoUsuario.length === 11) {
     this.authService.getTecnicoEncontrado(),
     this.tecnicoEncontrado= true;
   } 
