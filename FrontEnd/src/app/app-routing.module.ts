@@ -6,6 +6,7 @@ import { FormTecnicoComponent } from './cadastro/form-tecnico/form-tecnico.compo
 import { FormEmpresaComponent } from './cadastro/form-empresa/form-empresa.component';
 import { ConsultaEmpresaComponent } from './consultas/consulta-empresa/consulta-empresa.component';
 import { ConsultaTecnicoComponent } from './consultas/consulta-tecnico/consulta-tecnico.component';
+import { ConsultasComponent } from './consultas/consultas.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -17,21 +18,10 @@ const routes: Routes = [
   {path: 'formtecnico', component: FormTecnicoComponent},
   { path: 'formempresa', component: FormEmpresaComponent},  
   { path: 'consultaEmpresa', component: ConsultaEmpresaComponent},
-  { path: 'consultaTecnico', loadChildren: () => import('./consultas/consultas.module').then(m => m.ConsultasModule)},
-  { path: 'consultaTecnico:tipoUsuario', loadChildren: () => import('./consultas/consultas.module').then(m => m.ConsultasModule)
-},
-  // { path: 'consultas/:id', 
-  // loadChildren: () => import('./consultas/consultas.module').then(m => m.ConsultasModule)
-  //  },
-  { path: 'consultas', 
+  { path: 'consultas',
   loadChildren: () => import('./consultas/consultas.module').then(m => m.ConsultasModule)
    },
-   { path: 'consultas/consultaTecnico', 
-  loadChildren: () => import('./consultas/consultas.module').then(m => m.ConsultasModule)
-   },
-   { path: 'consultas/consultaEmpresa', 
-  loadChildren: () => import('./consultas/consultas.module').then(m => m.ConsultasModule)
-   },
+
   ]
 
 @NgModule({

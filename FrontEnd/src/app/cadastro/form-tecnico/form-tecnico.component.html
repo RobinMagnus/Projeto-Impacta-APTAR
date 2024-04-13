@@ -136,8 +136,11 @@
     </mat-card-content>
 
     <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="onSubmitTec()">Cadastre-se</button>
+      <button mat-raised-button color="primary" (click)="isEditMode ? onUpdateTec() : onSubmitTec()">
+        {{ isEditMode ? 'Editar' : 'Cadastrar' }}
+      </button>
     </mat-card-actions>
+    
 
   </div>
 </div>

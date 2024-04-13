@@ -23,6 +23,9 @@ export class FormTecnicoComponent {
   form: FormGroup;
   usuario: any;
 
+  isEditMode: boolean = false;
+
+
   constructor(
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
@@ -66,6 +69,7 @@ export class FormTecnicoComponent {
       this.usuario = params['tipoUsuario'];
       
       if (this.usuario) {
+        this.isEditMode = true;
         this.preencherFormulario();
       }
     });
@@ -131,6 +135,25 @@ export class FormTecnicoComponent {
       }
     })
   }
+  
+  onUpdateTec() {
+    if (this.form.valid) {
+      const tecnicoData: TecnicoDtoinput = this.form.value;
+      this.service.updateTec(tecnicoData).subscribe(
+        response => {
+          console.log('Técnico atualizado com sucesso!', response);
+          // Adicione aqui qualquer lógica adicional após a atualização bem-sucedida
+        },
+        error => {
+          console.error('Erro ao atualizar técnico:', error);
+          // Adicione aqui qualquer lógica para lidar com erros durante a atualização
+        }
+      );
+    } else {
+      // Adicione lógica para lidar com formulário inválido, se necessário
+    }
+  }
+  
 
   validarCPF(control: AbstractControl): ValidationErrors | null {
     const  cpf = control.value;

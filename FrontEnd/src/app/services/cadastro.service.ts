@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {Observable, of} from 'rxjs';
+import {Observable, catchError, of, throwError} from 'rxjs';
 import { FormControl} from "@angular/forms";
 import {TecnicoDtoinput} from "../models/tecnico-dtoinput";
 import {EmpresaDTOinput} from "../models/empresa-dtoinput";
@@ -123,6 +123,18 @@ export class CadastroService {
     }
 
     return true;
+  }
+
+  updateTec(tecnicoData: TecnicoDtoinput): Observable<any> {
+    const url = `${this.urlTec}/tecnico`; // Supondo que a rota para atualizar o técnico seja '/tecnico' na sua API
+    return this.http.put<any>(url, tecnicoData)
+      .pipe(
+        catchError(error => {
+          // Aqui você pode tratar os erros, se necessário
+          console.error('Erro ao atualizar técnico:', error);
+          return throwError(error);
+        })
+      );
   }
 
 
