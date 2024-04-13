@@ -14,17 +14,20 @@ const routes: Routes = [
     component: ConsultasComponent,
     children: [
       { 
-        path: 'consultaEmpresa', component: ConsultaEmpresaComponent,
+        path: '', component: ConsultaEmpresaComponent,
         children: [
           { path: 'formEmpresa', component: FormEmpresaComponent },
+          { path: ':tipoUsuario', component: FormEmpresaComponent },
+
           { path: 'formEmpresa/:tipoUsuario', component: FormEmpresaComponent },
           { path: 'tabEmpresa', component: TabelaEmpresaComponent }
         ]
       },
       {
-        path: 'consultaTecnico', component: ConsultaTecnicoComponent,
+        path: '', component: ConsultaTecnicoComponent,
         children: [
           { path: 'formTecnico', component: FormTecnicoComponent },
+          { path: ':tipoUsuario', component: FormTecnicoComponent },
           { path: 'formTecnico/:tipoUsuario', component: FormTecnicoComponent },
           { path: 'tabTecnico', component: TabelaTecnicoComponent }
         ]

@@ -14,11 +14,11 @@ export class ConsultaTecnicoComponent {
   // tecnicoEncontrado?:any ;
 
   // constructor(private route: ActivatedRoute,
-  //   private authService: AuthService
+  // private authService: AuthService
 
   // ) {}
 
-  // ngOnInit() {
+  //  ngOnInit() {
   //   this.tipoUsuario = history.state.tipoUsuario;
   //   console.log(this.tipoUsuario)
   //   this.authService.getTecnicoEncontrado()

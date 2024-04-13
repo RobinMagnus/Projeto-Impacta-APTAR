@@ -25,6 +25,12 @@ const routes: Routes = [
   { path: 'consultas', 
   loadChildren: () => import('./consultas/consultas.module').then(m => m.ConsultasModule)
    },
+   { path: 'consultas/consultaTecnico', 
+  loadChildren: () => import('./consultas/consultas.module').then(m => m.ConsultasModule)
+   },
+   { path: 'consultas/consultaEmpresa', 
+  loadChildren: () => import('./consultas/consultas.module').then(m => m.ConsultasModule)
+   },
   ]
 
 @NgModule({
