@@ -1,8 +1,11 @@
 package com.projetoimpacta.aptar.resources;
 
 import com.projetoimpacta.aptar.domain.Empresa;
+import com.projetoimpacta.aptar.domain.Tecnico;
 import com.projetoimpacta.aptar.dtos.EmpresaDTOinput;
 import com.projetoimpacta.aptar.dtos.EmpresaDTOout;
+import com.projetoimpacta.aptar.dtos.TecnicoDTOinput;
+import com.projetoimpacta.aptar.dtos.TecnicoDTOout;
 import com.projetoimpacta.aptar.services.EmpresaService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +33,13 @@ public class EmpresaResource {
     @GetMapping(value = "search/{cnpj}")
     public ResponseEntity<EmpresaDTOout> findByCnpj(@PathVariable String cnpj) {
         Empresa obj = service.findByCnpj(cnpj);
+        return ResponseEntity.ok().body(new EmpresaDTOout(obj));
+    }
+
+    @GetMapping(value = "/searchEmail/{email}")
+    public ResponseEntity<EmpresaDTOout> findByEmail(@PathVariable String email) {
+        Empresa obj = service.findByEmail(email);
+        new EmpresaDTOinput(obj);
         return ResponseEntity.ok().body(new EmpresaDTOout(obj));
     }
 

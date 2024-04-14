@@ -1,18 +1,14 @@
 import { Component } from '@angular/core';
-import {FormBuilder, FormGroup, FormsModule} from "@angular/forms";
+import {FormBuilder, FormGroup} from "@angular/forms";
 import {CadastroService} from "../services/cadastro.service";
 import { AuthService } from './auth.service';
 import { Usuario } from './usuario';
 import { Router } from '@angular/router';
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/dev
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
 
@@ -53,9 +49,4 @@ export class LoginComponent {
     );
   }
 
-<<<<<<< HEAD
 }
-=======
-}
-
->>>>>>> origin/dev
