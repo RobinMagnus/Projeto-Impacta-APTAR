@@ -10,6 +10,8 @@ import {
 import {CadastroService} from "../../services/cadastro.service";
 import {TecnicoDtoinput} from "../../models/tecnico-dtoinput";
 import {distinctUntilChanged, empty, switchMap, tap} from "rxjs";
+import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/login/auth.service';
 
 @Component({
   selector: 'app-form-tecnico',
@@ -19,10 +21,16 @@ import {distinctUntilChanged, empty, switchMap, tap} from "rxjs";
 export class FormTecnicoComponent {
 
   form: FormGroup;
+  usuario: any;
+
+  isEditMode: boolean = false;
+
 
   constructor(
+    private route: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private service: CadastroService
+    private service: CadastroService,
+    private authService: AuthService
   ) {
     this.form = this.formBuilder.group({
       nome: [null, Validators.required],
@@ -54,6 +62,43 @@ export class FormTecnicoComponent {
       )
       .subscribe((dados: any) => dados ? this.populaDadosform(dados) : {});
   }
+
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      console.log(params)
+      this.usuario = params['tipoUsuario'];
+      
+      if (this.usuario) {
+        this.isEditMode = true;
+        this.preencherFormulario();
+      }
+    });
+  }
+
+  preencherFormulario() {
+    const tecnicoEncontrado = this.authService.getTecnicoEncontrado();
+    if (tecnicoEncontrado && tecnicoEncontrado.endereco) {
+      this.form.patchValue({
+        nome: tecnicoEncontrado.nome,
+        cpf: tecnicoEncontrado.cpf,
+        telefone: tecnicoEncontrado.telefone,
+        endereco: {
+          cep: tecnicoEncontrado.endereco.cep,
+          logradouro: tecnicoEncontrado.endereco.logradouro,
+          numero: tecnicoEncontrado.endereco.numero,
+          complemento: tecnicoEncontrado.endereco.complemento,
+          bairro: tecnicoEncontrado.endereco.bairro,
+          cidade: tecnicoEncontrado.endereco.cidade,
+          estado: tecnicoEncontrado.endereco.estado
+        },
+        email: tecnicoEncontrado.email,
+        senha: tecnicoEncontrado.senha, 
+        confirmarSenha: tecnicoEncontrado.confirmarSenha
+      });
+    }
+  }
+  
+  
 
   onSubmitTec() {
     console.log(this.form)
@@ -90,6 +135,25 @@ export class FormTecnicoComponent {
       }
     })
   }
+  
+  onUpdateTec() {
+    if (this.form.valid) {
+      const tecnicoData: TecnicoDtoinput = this.form.value;
+      this.service.updateTec(tecnicoData).subscribe(
+        response => {
+          console.log('Técnico atualizado com sucesso!', response);
+          // Adicione aqui qualquer lógica adicional após a atualização bem-sucedida
+        },
+        error => {
+          console.error('Erro ao atualizar técnico:', error);
+          // Adicione aqui qualquer lógica para lidar com erros durante a atualização
+        }
+      );
+    } else {
+      // Adicione lógica para lidar com formulário inválido, se necessário
+    }
+  }
+  
 
   validarCPF(control: AbstractControl): ValidationErrors | null {
     const  cpf = control.value;

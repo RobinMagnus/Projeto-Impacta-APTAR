@@ -1,15 +1,32 @@
-<mat-sidenav-container class="sidenavbar-consultas">
-    <mat-sidenav class="sidenav-menu" mode="side" opened>
-        <mat-nav-list>
-            <mat-list-item class="custom-list-item">
-                <a routerLink="/cadastro">Perfil</a>
-            </mat-list-item>
-            <mat-list-item class="custom-list-item">
-                <a routerLink="/home">Consultas</a>
-            </mat-list-item>     
-        </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-        <!-- Conteúdo da página aqui -->
-    </mat-sidenav-content>
-</mat-sidenav-container>
+<div class="container">
+    <div class="content">
+      <nav class="sidenav">
+        <ul>
+          <!-- Verifica se o tipo de usuário é 'tecnico' para exibir as rotas relacionadas -->
+          <ng-container *ngIf="tecnicoEncontrado">
+            <li class="custom-list-item">
+              <a [routerLink]="['consultaTecnico', 'formTecnico', tipoUsuario]">Perfil Técnico</a>
+            </li>
+            <li class="custom-list-item">
+              <a [routerLink]="['consultaTecnico', 'tabTecnico', tipoUsuario]">Consultas Técnico</a>
+            </li>
+          </ng-container>
+                    
+          <ng-container *ngIf="empresaEncontrada">
+            <li class="custom-list-item">
+              <a [routerLink]="['consultaEmpresa', 'formEmpresa', tipoUsuario]">Perfil Empresa</a>
+            </li>
+            <li class="custom-list-item">
+              <a [routerLink]="['consultaEmpresa', 'tabEmpresa', tipoUsuario]">Consultas Empresa</a>
+            </li>
+          </ng-container>
+        </ul>
+      </nav>
+      <main class="main-content">
+        <mat-card>
+            <router-outlet></router-outlet>          
+        </mat-card>
+      </main>
+    </div>
+  </div>
+  

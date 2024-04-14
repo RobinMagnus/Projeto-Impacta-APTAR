@@ -2,6 +2,10 @@ import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
 import {HomeComponent} from "./home/home.component";
 import {LoginComponent} from "./login/login.component";
+import { FormTecnicoComponent } from './cadastro/form-tecnico/form-tecnico.component';
+import { FormEmpresaComponent } from './cadastro/form-empresa/form-empresa.component';
+import { ConsultaEmpresaComponent } from './consultas/consulta-empresa/consulta-empresa.component';
+import { ConsultaTecnicoComponent } from './consultas/consulta-tecnico/consulta-tecnico.component';
 import { ConsultasComponent } from './consultas/consultas.component';
 
 const routes: Routes = [
@@ -11,7 +15,13 @@ const routes: Routes = [
   { path: 'cadastro',
     loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroModule)
   },
-  { path: 'consultas', component: ConsultasComponent }
+  {path: 'formtecnico', component: FormTecnicoComponent},
+  { path: 'formempresa', component: FormEmpresaComponent},  
+  { path: 'consultaEmpresa', component: ConsultaEmpresaComponent},
+  { path: 'consultas',
+  loadChildren: () => import('./consultas/consultas.module').then(m => m.ConsultasModule)
+   },
+
   ]
 
 @NgModule({

@@ -8,6 +8,7 @@ import {MatTabsModule} from "@angular/material/tabs";
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
+import {MatTableModule} from '@angular/material/table';
 
 
 
@@ -21,7 +22,8 @@ import {MatListModule} from '@angular/material/list';
     MatTabsModule,
     FlexLayoutModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatTableModule
 
 
 ]

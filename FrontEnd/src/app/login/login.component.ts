@@ -4,7 +4,10 @@ import {CadastroService} from "../services/cadastro.service";
 import { AuthService } from './auth.service';
 import { Usuario } from './usuario';
 import { Router } from '@angular/router';
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/dev
 
 @Component({
   selector: 'app-login',
@@ -50,4 +53,9 @@ export class LoginComponent {
     );
   }
 
+<<<<<<< HEAD
 }
+=======
+}
+
+>>>>>>> origin/dev
