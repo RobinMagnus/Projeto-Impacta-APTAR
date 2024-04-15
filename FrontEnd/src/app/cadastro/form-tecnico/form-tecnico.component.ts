@@ -24,6 +24,8 @@ export class FormTecnicoComponent {
   usuario: any;
 
   isEditMode: boolean = false;
+  tecnicoEncontrado?:TecnicoDtoinput;
+  idTecnico?: any;
 
 
   constructor(
@@ -71,32 +73,33 @@ export class FormTecnicoComponent {
       if (this.usuario) {
         this.isEditMode = true;
         this.preencherFormulario();
+
       }
     });
   }
 
   preencherFormulario() {
-    const tecnicoEncontrado = this.authService.getTecnicoEncontrado();
-    if (tecnicoEncontrado && tecnicoEncontrado.endereco) {
+    this.tecnicoEncontrado = this.authService.getTecnicoEncontrado();
+    if (this.tecnicoEncontrado && this.tecnicoEncontrado.endereco) {
       this.form.patchValue({
-        nome: tecnicoEncontrado.nome,
-        cpf: tecnicoEncontrado.cpf,
-        telefone: tecnicoEncontrado.telefone,
+        nome: this.tecnicoEncontrado.nome,
+        cpf: this.tecnicoEncontrado.cpf,
+        telefone: this.tecnicoEncontrado.telefone,
         endereco: {
-          cep: tecnicoEncontrado.endereco.cep,
-          logradouro: tecnicoEncontrado.endereco.logradouro,
-          numero: tecnicoEncontrado.endereco.numero,
-          complemento: tecnicoEncontrado.endereco.complemento,
-          bairro: tecnicoEncontrado.endereco.bairro,
-          cidade: tecnicoEncontrado.endereco.cidade,
-          estado: tecnicoEncontrado.endereco.estado
+          cep: this.tecnicoEncontrado.endereco.cep,
+          logradouro: this.tecnicoEncontrado.endereco.logradouro,
+          numero: this.tecnicoEncontrado.endereco.numero,
+          complemento: this.tecnicoEncontrado.endereco.complemento,
+          bairro: this.tecnicoEncontrado.endereco.bairro,
+          cidade: this.tecnicoEncontrado.endereco.cidade,
+          estado: this.tecnicoEncontrado.endereco.estado
         },
-        email: tecnicoEncontrado.email,
-        senha: tecnicoEncontrado.senha, 
-        confirmarSenha: tecnicoEncontrado.confirmarSenha
+        email: this.tecnicoEncontrado.email,
+        senha: this.tecnicoEncontrado.senha, 
       });
     }
   }
+  
   
   
 
@@ -137,20 +140,40 @@ export class FormTecnicoComponent {
   }
   
   onUpdateTec() {
-    if (this.form.valid) {
-      const tecnicoData: TecnicoDtoinput = this.form.value;
-      this.service.updateTec(tecnicoData).subscribe(
-        response => {
-          console.log('Técnico atualizado com sucesso!', response);
-          // Adicione aqui qualquer lógica adicional após a atualização bem-sucedida
-        },
-        error => {
-          console.error('Erro ao atualizar técnico:', error);
-          // Adicione aqui qualquer lógica para lidar com erros durante a atualização
-        }
-      );
+    this.tecnicoEncontrado = this.authService.getTecnicoEncontrado();
+    if (this.tecnicoEncontrado) {
+      this.idTecnico = this.tecnicoEncontrado.id;
+      if (this.form.valid && this.idTecnico) {
+        this.tecnicoEncontrado.nome = this.form.get('nome')?.value;
+        this.tecnicoEncontrado.cpf = this.form.get('cpf')?.value;
+        this.tecnicoEncontrado.telefone = this.form.get('telefone')?.value;
+        this.tecnicoEncontrado.endereco.cep = this.form.get('endereco.cep')?.value;
+        this.tecnicoEncontrado.endereco.logradouro = this.form.get('endereco.logradouro')?.value;
+        this.tecnicoEncontrado.endereco.numero = this.form.get('endereco.numero')?.value;
+        this.tecnicoEncontrado.endereco.complemento = this.form.get('endereco.complemento')?.value;
+        this.tecnicoEncontrado.endereco.bairro = this.form.get('endereco.bairro')?.value;
+        this.tecnicoEncontrado.endereco.cidade = this.form.get('endereco.cidade')?.value;
+        this.tecnicoEncontrado.endereco.estado = this.form.get('endereco.estado')?.value;
+        this.tecnicoEncontrado.email = this.form.get('email')?.value;
+        this.tecnicoEncontrado.senha = this.form.get('senha')?.value;
+        
+  
+        this.service.updateTec(this.idTecnico, this.tecnicoEncontrado).subscribe(
+          response => {
+            console.log('Técnico atualizado com sucesso!', response);
+            // Adicione aqui qualquer lógica adicional após a atualização bem-sucedida
+          },
+          error => {
+            console.error('Erro ao atualizar técnico:', error);
+            // Adicione aqui qualquer lógica para lidar com erros durante a atualização
+          }
+        );
+      } else {
+        // Adicione lógica para lidar com formulário inválido, se necessário
+      }
     } else {
-      // Adicione lógica para lidar com formulário inválido, se necessário
+      console.error('Nenhum técnico encontrado para atualizar.');
+      // Adicione lógica para lidar com a ausência de técnico encontrado
     }
   }
   

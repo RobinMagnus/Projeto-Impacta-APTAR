@@ -125,12 +125,13 @@ export class CadastroService {
     return true;
   }
 
-  updateTec(tecnicoData: TecnicoDtoinput): Observable<any> {
-    const url = `${this.urlTec}/tecnico`; // Supondo que a rota para atualizar o técnico seja '/tecnico' na sua API
-    return this.http.put<any>(url, tecnicoData)
+  updateTec(idTecnico: any, tecnicoDTO: TecnicoDtoinput): Observable<any> {
+    console.log('update ' + idTecnico);
+    console.log('update ' + tecnicoDTO);
+    const url = `${this.urlTec}/${idTecnico}`;
+    return this.http.put<any>(url, tecnicoDTO)
       .pipe(
         catchError(error => {
-          // Aqui você pode tratar os erros, se necessário
           console.error('Erro ao atualizar técnico:', error);
           return throwError(error);
         })

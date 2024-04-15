@@ -136,9 +136,20 @@
     </mat-card-content>
 
     <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="isEditMode ? onUpdateTec() : onSubmitTec()">
-        {{ isEditMode ? 'Editar' : 'Cadastrar' }}
-      </button>
+      <!-- Verifica se está no modo de edição -->
+      <ng-container *ngIf="isEditMode; else cadastroButton">
+        <!-- Botão de editar -->
+        <button mat-raised-button color="primary" (click)="onUpdateTec()">
+          Editar
+        </button>
+      </ng-container>
+      <!-- Caso contrário, está no modo de cadastro -->
+      <ng-template #cadastroButton>
+        <!-- Botão de cadastrar -->
+        <button mat-raised-button color="primary" (click)="onSubmitTec()">
+          Cadastrar
+        </button>
+      </ng-template>
     </mat-card-actions>
     
 

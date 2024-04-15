@@ -12,7 +12,7 @@ export class AuthService {
   
   usuarioAutenticado:boolean = false;
 
-  @Input() tecnicoEncontrado?:any;
+  tecnicoEncontrado?:any;
   empresaEncontrada?:any;
 
   mostrarMenuEmitter = new EventEmitter<boolean>();
