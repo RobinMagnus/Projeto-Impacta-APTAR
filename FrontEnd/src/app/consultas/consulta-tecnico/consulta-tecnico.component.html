@@ -17,11 +17,14 @@
         <li><strong>Cidade:</strong> {{ tecnicoEncontrado?.endereco?.cidade }}</li>
         <li><strong>Estado:</strong> {{ tecnicoEncontrado?.endereco?.estado }}</li>
       </ul>
+
+      <mat-card-actions>
+        <button mat-raised-button color="primary" [routerLink]="['../../formTecnico', tipoUsuario]">Editar</button>
+      </mat-card-actions>
+      
     </mat-card-content>
   
-    <mat-card-actions>
-      <!-- <button mat-raised-button color="primary" (click)="editarTecnico()">Editar</button> -->
-    </mat-card-actions>
+   
   </mat-card>
   
 
