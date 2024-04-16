@@ -5,7 +5,7 @@
           <!-- Verifica se o tipo de usuário é 'tecnico' para exibir as rotas relacionadas -->
           <ng-container *ngIf="tecnicoEncontrado">
             <li class="custom-list-item">
-              <a [routerLink]="['consultaTecnico', 'formTecnico', tipoUsuario]">Perfil Técnico</a>
+              <a [routerLink]="['consultaTecnico', 'perfil-tecnico', tipoUsuario]">Perfil Técnico</a>
             </li>
             <li class="custom-list-item">
               <a [routerLink]="['consultaTecnico', 'tabTecnico', tipoUsuario]">Consultas Técnico</a>

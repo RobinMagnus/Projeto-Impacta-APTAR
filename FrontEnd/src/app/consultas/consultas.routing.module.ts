@@ -21,8 +21,9 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'consultaTecnico',
+        path: 'consultaTecnico', 
         children: [
+          { path: 'perfil-tecnico/:tipoUsuario', component: ConsultaTecnicoComponent },
           { path: 'formTecnico/:tipoUsuario', component: FormTecnicoComponent },
           { path: 'tabTecnico/:tipoUsuario', component: TabelaTecnicoComponent }
         ]

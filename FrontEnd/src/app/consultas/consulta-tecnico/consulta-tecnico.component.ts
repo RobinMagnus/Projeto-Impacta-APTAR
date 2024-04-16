@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/login/auth.service';
+import { TecnicoDtoinput } from 'src/app/models/tecnico-dtoinput';
 
 @Component({
   selector: 'app-consulta-tecnico',
@@ -9,20 +10,21 @@ import { AuthService } from 'src/app/login/auth.service';
 })
 export class ConsultaTecnicoComponent {
 
-  // tipoUsuario?: string;
+
   
-  // tecnicoEncontrado?:any ;
+  tecnicoEncontrado?:TecnicoDtoinput ;
 
-  // constructor(private route: ActivatedRoute,
-  // private authService: AuthService
+  constructor(private route: ActivatedRoute,
+  private authService: AuthService
 
-  // ) {}
+  ) {}
 
-  //  ngOnInit() {
-  //   this.tipoUsuario = history.state.tipoUsuario;
-  //   console.log(this.tipoUsuario)
-  //   this.authService.getTecnicoEncontrado()
+   ngOnInit() {
+    
+    this.tecnicoEncontrado = this.authService.getTecnicoEncontrado();
+    console.log(this.tecnicoEncontrado);
+    
 
     
-  // }
+  }
 }

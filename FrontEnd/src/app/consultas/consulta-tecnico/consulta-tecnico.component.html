@@ -1,23 +1,30 @@
-<!-- <div class="container">
-    <div class="content">
-    <nav class="sidenav">
-        <ul>
-            <li class="custom-list-item">
-                <a [routerLink]="['consultas', '/formTecnico', tipoUsuario]">Perfil</a>
-            </li>
-            <li class="custom-list-item">
-                <a href="/tabtec">Consultas</a>
-            </li>
-        </ul>
-    </nav>
-    <main class="main-content">
-        <mat-card>
-            <mat-toolbar>Meus dados:</mat-toolbar>
-            Nome: {{ tecnicoEncontrado.nome }}
-        </mat-card>
+<mat-card>
+    <mat-toolbar>Meus dados:</mat-toolbar>
+  
+    <mat-card-content>
+      <p><strong>Nome:</strong> {{ tecnicoEncontrado?.nome }}</p>
+      <p><strong>E-mail:</strong> {{ tecnicoEncontrado?.email }}</p>
+      <p><strong>Senha:</strong> {{ tecnicoEncontrado?.senha }}</p>
+      <p><strong>Telefone:</strong> {{ tecnicoEncontrado?.telefone }}</p>
+      <p><strong>CPF:</strong> {{ tecnicoEncontrado?.cpf }}</p>
+      <p><strong>Endereço:</strong></p>
+      <ul>
+        <li><strong>CEP:</strong> {{ tecnicoEncontrado?.endereco?.cep }}</li>
+        <li><strong>Logradouro:</strong> {{ tecnicoEncontrado?.endereco?.logradouro }}</li>
+        <li><strong>Número:</strong> {{ tecnicoEncontrado?.endereco?.numero }}</li>
+        <li><strong>Complemento:</strong> {{ tecnicoEncontrado?.endereco?.complemento }}</li>
+        <li><strong>Bairro:</strong> {{ tecnicoEncontrado?.endereco?.bairro }}</li>
+        <li><strong>Cidade:</strong> {{ tecnicoEncontrado?.endereco?.cidade }}</li>
+        <li><strong>Estado:</strong> {{ tecnicoEncontrado?.endereco?.estado }}</li>
+      </ul>
+    </mat-card-content>
+  
+    <mat-card-actions>
+      <!-- <button mat-raised-button color="primary" (click)="editarTecnico()">Editar</button> -->
+    </mat-card-actions>
+  </mat-card>
+  
 
 
-    <router-outlet></router-outlet>
-    </main>
-</div>
-</div> -->
+
+
