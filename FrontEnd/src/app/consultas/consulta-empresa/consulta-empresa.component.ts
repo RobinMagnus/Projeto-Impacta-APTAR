@@ -3,7 +3,10 @@ import { Chamados } from 'src/app/models/chamado';
 import { Endereco } from 'src/app/models/endereco';
 import { ConsultasService } from '../consultas.service';
 import { Observable } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { EmpresaDTOinput } from 'src/app/models/empresa-dtoinput';
+import { AuthService } from 'src/app/login/auth.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-consulta-empresa',
@@ -11,14 +14,23 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./consulta-empresa.component.css']
 })
 export class ConsultaEmpresaComponent implements OnInit {
-  tipoUsuario?: string;
 
-  constructor(private route: ActivatedRoute) {}
+  tipoUsuario?: string;
+  empresaEncontrada?: EmpresaDTOinput;
+
+  constructor(private route: ActivatedRoute,
+  private authService: AuthService,
+  
+) {}
 
   ngOnInit() {
-    // Recupera o tipo de usuário dos parâmetros de rota
+        
+    this.empresaEncontrada = this.authService.getTecnicoEncontrado();
+    console.log(this.empresaEncontrada);
     this.tipoUsuario = history.state.tipoUsuario;
   }
+
+
 
 
 }

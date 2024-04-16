@@ -2,6 +2,7 @@ import {Endereco} from "./endereco";
 
 
 export interface Chamados {
+    nomeEmpresa: any;
     id: number;
     numeroChamado: string;
     status: number;
