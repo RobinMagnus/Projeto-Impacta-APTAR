@@ -22,7 +22,6 @@ export class FormTecnicoComponent {
 
   form: FormGroup;
   usuario: any;
-
   isEditMode: boolean = false;
   tecnicoEncontrado?:TecnicoDtoinput;
   idTecnico?: any;
@@ -138,6 +137,26 @@ export class FormTecnicoComponent {
       }
     })
   }
+
+  validarCPF(control: AbstractControl): ValidationErrors | null {
+    const  cpf = control.value;
+    if (cpf == null) {
+      return null;
+    }
+    const cpfValido = this.service.validarCPF(cpf);
+    return cpfValido ? null : { 'cpfInvalid': true };
+  }
+
+  equalsTo(otherField: string): ValidatorFn {
+    return (formControl: AbstractControl) => {
+      const field = formControl.root.get(otherField) as AbstractControl;
+      if (field && field.value !== formControl.value) {
+        return {equalsTo: true};
+      }
+      return null;
+    };
+
+  }
   
   onUpdateTec() {
     this.tecnicoEncontrado = this.authService.getTecnicoEncontrado();
@@ -178,25 +197,7 @@ export class FormTecnicoComponent {
   }
   
 
-  validarCPF(control: AbstractControl): ValidationErrors | null {
-    const  cpf = control.value;
-    if (cpf == null) {
-      return null;
-    }
-    const cpfValido = this.service.validarCPF(cpf);
-    return cpfValido ? null : { 'cpfInvalid': true };
-  }
-
-  equalsTo(otherField: string): ValidatorFn {
-    return (formControl: AbstractControl) => {
-      const field = formControl.root.get(otherField) as AbstractControl;
-      if (field && field.value !== formControl.value) {
-        return {equalsTo: true};
-      }
-      return null;
-    };
-
-  }
+ 
 }
 
 

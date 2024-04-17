@@ -14,8 +14,9 @@ const routes: Routes = [
     component: ConsultasComponent,
     children: [
       { 
-        path: 'consultaEmpresa', component: ConsultaEmpresaComponent,
+        path: 'consultaEmpresa',
         children: [
+          { path: 'perfil-empresa/:tipoUsuario', component: ConsultaEmpresaComponent },
           { path: 'formEmpresa/:tipoUsuario', component: FormEmpresaComponent },
           { path: 'tabEmpresa/:tipoUsuario', component: TabelaEmpresaComponent }
         ]

@@ -23,7 +23,7 @@ export class TabelaTecnicoComponent implements OnInit {
   };
 
   
-  displayedColumns = ['numeroChamado', 'status', 'endereco', 'tecnico', 'acoes' ]
+  displayedColumns = ['numeroChamado', 'cidade', 'bairro', 'empresa', 'acoes' ]
 
   ngOnInit(): void {
     this.chamados = this.consultaService.list();

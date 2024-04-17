@@ -138,5 +138,16 @@ export class CadastroService {
       );
   }
 
-
+  updateEmp(idEmpresa: any, empresaDTO: EmpresaDTOinput): Observable<any> {
+    console.log('update ' + idEmpresa);
+    console.log('update ' + empresaDTO);
+    const url = `${this.urlEmp}/${idEmpresa}`;
+    return this.http.put<any>(url, empresaDTO).pipe(
+      catchError(error => {
+        console.error('Erro ao atualizar empresa:', error);
+        return throwError(error);
+      })
+    );
+  }
 }
+

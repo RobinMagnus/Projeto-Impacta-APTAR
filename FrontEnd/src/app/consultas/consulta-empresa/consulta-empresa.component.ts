@@ -25,7 +25,7 @@ export class ConsultaEmpresaComponent implements OnInit {
 
   ngOnInit() {
         
-    this.empresaEncontrada = this.authService.getTecnicoEncontrado();
+    this.empresaEncontrada = this.authService.getEmpresaEncontrada();
     console.log(this.empresaEncontrada);
     this.tipoUsuario = history.state.tipoUsuario;
   }

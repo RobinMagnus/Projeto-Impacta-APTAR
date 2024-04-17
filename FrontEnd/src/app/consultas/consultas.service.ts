@@ -13,7 +13,7 @@ export class ConsultasService {
   private readonly APITECNICO = 'http://localhost:8080/tecnicos';
 
 
-  private usuario?: TecnicoDtoinput;
+  private usuario?: any;
 
 
   constructor(private httpClient: HttpClient) { }
@@ -27,12 +27,9 @@ export class ConsultasService {
   
 
   getUsuario(id: number){
-    return this.httpClient.get<TecnicoDtoinput>(`${this.APITECNICO}/${id}`)
+    return this.httpClient.get<any>(`${this.APITECNICO}/${id}`)
     .pipe(
-      tap((user:TecnicoDtoinput) => console.log(user))
-
-     
+      tap((user) => console.log(user))     
     )
-
   }
 }
