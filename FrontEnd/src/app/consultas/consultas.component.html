@@ -5,19 +5,19 @@
           <!-- Verifica se o tipo de usuário é 'tecnico' para exibir as rotas relacionadas -->
           <ng-container *ngIf="tecnicoEncontrado">
             <li class="custom-list-item">
-              <a [routerLink]="['consultaTecnico', 'perfil-tecnico', tipoUsuario]">Perfil Técnico</a>
+              <a [routerLink]="['consultaTecnico', 'perfil-tecnico', tipoUsuario]">Perfil</a>
             </li>
             <li class="custom-list-item">
-              <a [routerLink]="['consultaTecnico', 'tabTecnico', tipoUsuario]">Consultas Técnico</a>
+              <a [routerLink]="['consultaTecnico', 'tabTecnico', tipoUsuario]">Chamados</a>
             </li>
           </ng-container>
                     
           <ng-container *ngIf="empresaEncontrada">
             <li class="custom-list-item">
-              <a [routerLink]="['consultaEmpresa', 'perfil-empresa', tipoUsuario]">Perfil Empresa</a>
+              <a [routerLink]="['consultaEmpresa', 'perfil-empresa', tipoUsuario]">Perfil</a>
             </li>
             <li class="custom-list-item">
-              <a [routerLink]="['consultaEmpresa', 'tabEmpresa', tipoUsuario]">Consultas Empresa</a>
+              <a [routerLink]="['consultaEmpresa', 'tabEmpresa', tipoUsuario]">Chamados</a>
             </li>
           </ng-container>
         </ul>

@@ -70,4 +70,25 @@ export class TabelaEmpresaComponent implements OnInit {
       console.error('Erro ao carregar lista de chamados:', error);
     });
   }
+
+  
+  getButtonColor(status: number): string {
+    switch (status) {
+      case 0: return 'accent';
+      case 1: return 'primary';
+      case 2: return 'primary';
+      default: return '';
+    }
+  }
+
+  getButtonLabel(status: number): string {
+    switch (status) {
+      case 0: return 'Á FAZER';
+      case 1: return 'ADAPTAR';
+      case 2: return 'ENCERRADO';
+      default: return '';
+    }
+  }
 }
+
+

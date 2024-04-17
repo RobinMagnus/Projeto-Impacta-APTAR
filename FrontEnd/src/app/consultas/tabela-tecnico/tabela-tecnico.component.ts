@@ -3,6 +3,7 @@ import { Observable, map, of } from 'rxjs';
 import { Chamados } from 'src/app/models/chamado';
 import { ConsultasService } from '../consultas.service';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from 'src/app/login/auth.service';
 
 @Component({
   selector: 'app-tabela-tecnico',
@@ -12,10 +13,15 @@ import { HttpClient } from '@angular/common/http';
 export class TabelaTecnicoComponent implements OnInit {
   
   chamados: Observable<Chamados[]>;
-  empresas:any[] =[]
+  empresas:any[] =[];
+  tecnicos: any[] = [];
 
-  constructor(private consultaService: ConsultasService,
-    private http: HttpClient
+
+  constructor(
+    private consultaService: ConsultasService,
+    private http: HttpClient,
+    private auth: AuthService
+
   ){
    
     this.chamados = this.consultaService.list();
@@ -26,8 +32,9 @@ export class TabelaTecnicoComponent implements OnInit {
   displayedColumns = ['numeroChamado', 'cidade', 'bairro', 'empresa', 'acoes' ]
 
   ngOnInit(): void {
-    this.chamados = this.consultaService.list();
-  
+    const tecLogado = this.auth.getTecnicoEncontrado();
+    console.log('Empresa encontrada:', tecLogado);
+
     this.http.get<any>('http://localhost:8080/empresas').subscribe(
       (data: any) => {
         this.empresas = data;
@@ -37,12 +44,12 @@ export class TabelaTecnicoComponent implements OnInit {
           chamados.forEach((chamado: Chamados) => {
             const empresaEncontrada = this.empresas.find(empresa => empresa.id === chamado.empresa);
             if (empresaEncontrada) {
-              chamado.nomeEmpresa = empresaEncontrada.nome; // 
+              chamado.empresa = empresaEncontrada.nome; // 
             }
           });
   
-          // Filtrar chamados com status ENCERRADO
-          let chamadosFiltrados = chamados.filter(chamado => chamado.status !== 2);
+          // Filtrar chamados com status ENCERRADO e pertencentes à tecnico logado
+          let chamadosFiltrados = chamados.filter(chamado => chamado.status !== 2 && chamado.tecnico === tecLogado.id);
   
           // Ordenar chamados por status
           chamadosFiltrados = chamadosFiltrados.sort((a, b) => {
@@ -68,7 +75,7 @@ export class TabelaTecnicoComponent implements OnInit {
 
   getButtonColor(status: number): string {
     switch (status) {
-      case 0: return 'accent';
+      case 0: return 'warn';
       case 1: return 'primary';
       case 2: return 'primary';
       default: return '';
