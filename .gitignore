@@ -1,0 +1,26 @@
+# Arquivos de compilação Angular
+/dist/
+/node_modules/
+
+# Configurações do IDE
+.vscode/
+.idea/
+
+# Dependências específicas do usuário
+package-lock.json
+yarn.lock
+
+# Arquivos e diretórios específicos do Eclipse
+.project
+.classpath
+.settings/
+.metadata/
+
+# Outros arquivos específicos do Eclipse
+*.launch
+*.cache
+
+# Arquivos de compilação
+/bin/
+/build/
+/classes/
