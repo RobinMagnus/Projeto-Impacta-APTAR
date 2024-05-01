@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="content">
+      <nav class="sidenav">
+        <ul>
+          <!-- Verifica se o tipo de usuário é 'tecnico' para exibir as rotas relacionadas -->
+          <ng-container *ngIf="tecnicoEncontrado">
+            <li class="custom-list-item">
+              <a [routerLink]="['formulariodeentrega', 'perfil-tecnico', tipoUsuario]">Perfil</a>
+            </li>
+          </ng-container>
+                    
+          <ng-container *ngIf="empresaEncontrada">
+            <li class="custom-list-item">
+              <a [routerLink]="['aberturadechamados', 'perfil-empresa', tipoUsuario]">Perfil</a>
+            </li>
+          </ng-container>
+        </ul>
+      </nav>
+      <main class="main-content">
+        <mat-card>
+            <router-outlet></router-outlet>          
+        </mat-card>
+      </main>
+    </div>
+  </div>
+  

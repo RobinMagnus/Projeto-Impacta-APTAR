@@ -15,6 +15,11 @@ import {AppMaterialModule} from "./shared/app-material/app-material.module";
 import { ConsultasModule } from './consultas/consultas.module';
 import { AuthService } from './login/auth.service';
 import { ConsultasComponent } from './consultas/consultas.component';
+import { AberturaChamadoEmpresaComponent } from './formularios/formularios/abertura-chamado-empresa/abertura-chamado-empresa.component';
+import { FormularioDeEntregaTecnicoComponent } from './formularios/formularios/formulario-de-entrega-tecnico/formulario-de-entrega-tecnico.component';
+import { FormulariosComponent } from './formularios/formularios/formularios.component';
+import { AberturaDeChamadoEmpresaComponent } from './formularios/abertura-de-chamado-empresa/abertura-de-chamado-empresa.component';
+import { FormularioDeEntregaTecnicosComponent } from './formularios/formulario-de-entrega-tecnicos/formulario-de-entrega-tecnicos.component';
 
 
 
@@ -25,7 +30,12 @@ import { ConsultasComponent } from './consultas/consultas.component';
     HomeComponent,
     LoginComponent,
     CadastroComponent,
-    ConsultasComponent
+    ConsultasComponent,
+    AberturaChamadoEmpresaComponent,
+    FormularioDeEntregaTecnicoComponent,
+    FormulariosComponent,
+    AberturaDeChamadoEmpresaComponent,
+    FormularioDeEntregaTecnicosComponent
   ],
   imports: [
     BrowserModule,

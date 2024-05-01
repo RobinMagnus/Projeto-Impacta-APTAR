@@ -1,0 +1,113 @@
+<div class="center-container">
+    <div class="container">
+      <h2>Cadastro</h2>
+      <mat-card-content>
+        <form [formGroup]="form" class="min-width">
+            <mat-form-field>
+                <mat-label>Título do Chamado</mat-label>
+                <input matInput formControlName="titulo" placeholder="Digite aqui">
+                <mat-error *ngIf="form.get('titulo')?.invalid && (form.get('titulo')?.dirty || form.get('titulo')?.touched)">
+                  Título do Chamado é obrigatório.
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+  
+  
+          <div formGroupName="endereco" fxLayout="column">
+            <div class="input-group" fxLayout="row" fxLayoutGap="16px">
+              <div fxFlex="33%">
+                <mat-form-field class="input">
+                  <input matInput placeholder="CEP" formControlName="cep" (blur)="consultaCEP()">
+                  <mat-error *ngIf="form.get('endereco.cep')?.invalid && (form.get('endereco.cep')?.dirty || form.get('endereco.cep')?.touched)">
+                    CEP inválido.
+                  </mat-error>
+                </mat-form-field>
+  
+              </div>
+              <div fxFlex="67%">
+                <mat-form-field class="input">
+                  <input matInput placeholder="Logradouro" formControlName="logradouro" readonly>
+                  <mat-error *ngIf="form.get('endereco.logradouro')?.invalid && (form.get('endereco.logradouro')?.dirty || form.get('endereco.logradouro')?.touched)">
+                    Logradouro é obrigatório.
+                  </mat-error>
+                </mat-form-field>
+  
+              </div>
+            </div>
+            <div class="input-group" fxLayout="row" fxLayoutGap="16px">
+              <div fxFlex="33%">
+                <mat-form-field class="input">
+                  <input matInput placeholder="Número" formControlName="numero">
+                  <mat-error *ngIf="form.get('endereco.numero')?.invalid && (form.get('endereco.numero')?.dirty || form.get('endereco.numero')?.touched)">
+                    Numero é obrigatório.
+                  </mat-error>
+                </mat-form-field>
+  
+              </div>
+              <div fxFlex="67%">
+                <mat-form-field class="input">
+                  <input matInput placeholder="Complemento" formControlName="complemento">
+                  <mat-error *ngIf="form.get('endereco.complemento')?.invalid && (form.get('endereco.complemento')?.dirty || form.get('endereco.complemento')?.touched)">
+                    Complemento é obrigatório.
+                  </mat-error>
+                </mat-form-field>
+  
+              </div>
+            </div>
+            <div class="input-group" fxLayout="row" fxLayoutGap="16px">
+              <div fxFlex="33%">
+                <mat-form-field class="input">
+                  <input matInput placeholder="Bairro" formControlName="bairro" readonly>
+                  <mat-error *ngIf="form.get('endereco.bairro')?.invalid && (form.get('endereco.bairro')?.dirty || form.get('endereco.bairro')?.touched)">
+                    Bairro é obrigatório.
+                  </mat-error>
+                </mat-form-field>
+  
+              </div>
+              <div fxFlex="50%">
+                <mat-form-field class="input">
+                  <input matInput placeholder="Cidade" formControlName="cidade" readonly>
+                  <mat-error *ngIf="form.get('endereco.cidade')?.invalid && (form.get('endereco.cidade')?.dirty || form.get('endereco.cidade')?.touched)">
+                    Cidade  obrigatório.
+                  </mat-error>
+                </mat-form-field>
+  
+              </div>
+              <div fxFlex="17%">
+                <mat-form-field class="input">
+                  <input matInput placeholder="UF" formControlName="estado" readonly>
+                  <mat-error *ngIf="form.get('endereco.estado')?.invalid && (form.get('endereco.estado')?.dirty || form.get('endereco.estado')?.touched)">
+                    Estado é obrigatório.
+                  </mat-error>
+                </mat-form-field>
+  
+              </div>
+            </div>
+          </div>
+  
+          
+        </form>
+      </mat-card-content>
+  
+      <mat-card-actions>
+        <!-- Verifica se está no modo de edição -->
+        <ng-container *ngIf="isEditMode; else cadastroButton">
+          <!-- Botão de editar -->
+          <button mat-raised-button color="primary" (click)="onUpdateTec()">
+            Editar
+          </button>
+        </ng-container>
+        <!-- Caso contrário, está no modo de cadastro -->
+        <ng-template #cadastroButton>
+          <!-- Botão de cadastrar -->
+          <button mat-raised-button color="primary" (click)="onSubmitTec()">
+            SALVAR
+          </button>
+        </ng-template>
+      </mat-card-actions>
+      
+  
+    </div>
+  </div>
+  
