@@ -12,6 +12,8 @@ if git diff-index --quiet HEAD --; then
     exit 0
 fi
 
+git pull origin testUpload
+
 # Adiciona todas as alterações ao estágio
 git add .
 
