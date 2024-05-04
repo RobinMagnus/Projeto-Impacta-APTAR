@@ -16,12 +16,7 @@ fi
 git add .
 
 # Define uma mensagem de commit padrão
-echo "Digite a mensagem de commit (ou deixe em branco para usar a mensagem padrão):"
-read -r commit_message
-
-if [ -z "$commit_message" ]; then
-    commit_message="Commit automático"
-fi
+commit_message="Upload concluído"
 
 # Comita as mudanças com a mensagem fornecida
 git commit -m "$commit_message"

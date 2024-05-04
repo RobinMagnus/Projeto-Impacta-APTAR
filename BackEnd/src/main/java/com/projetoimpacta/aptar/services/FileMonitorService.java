@@ -51,9 +51,9 @@ public class FileMonitorService {
 
     private void executeGitCommands(Path filePath) throws IOException, InterruptedException {
         // Executa git add, commit e push
-        String gitAdd = "git add " + filePath;
-        String gitCommit = "git commit -m '" + COMMIT_MESSAGE + " - " + filePath + "'";
-        String gitPush = "git push";
+        String gitAdd = "git add .";// + filePath;
+        String gitCommit = "git commit -m 'Upload foto'";
+        String gitPush = "git push origin testUpload";
 
         // Executa os comandos Git
         executeCommand(gitAdd);
