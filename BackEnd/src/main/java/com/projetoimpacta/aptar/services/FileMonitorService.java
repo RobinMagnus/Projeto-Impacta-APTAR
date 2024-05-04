@@ -61,21 +61,6 @@ public class FileMonitorService {
         executeCommand(command);
     }
 
-
-
-
-//    private void executeGitCommands(Path filePath) throws IOException, InterruptedException {
-//        // Executa git add, commit e push
-//        String gitAdd = "git add .";// + filePath;
-//        String gitCommit = "git commit -m \"" + COMMIT_MESSAGE + "\"";
-//        String gitPush = "git push origin testUpload";
-//
-//        // Executa os comandos Git
-//        executeCommand(gitAdd);
-//        executeCommand(gitCommit);
-//        executeCommand(gitPush);
-//    }
-
     private void executeCommand(String[] command) throws IOException, InterruptedException {
         ProcessBuilder processBuilder = new ProcessBuilder(command);
         Process process = processBuilder.start();
@@ -87,16 +72,4 @@ public class FileMonitorService {
             System.out.println("Erro ao executar o comando: " + String.join(" ", command));
         }
     }
-
-
-//    private void executeCommand(String command) throws IOException, InterruptedException {
-//        Process process = Runtime.getRuntime().exec(command);
-//        int exitCode = process.waitFor();
-//
-//        if (exitCode == 0) {
-//            System.out.println("Comando \"" + command + "\" executado com sucesso.");
-//        } else {
-//            System.out.println("Erro ao executar o comando: " + command);
-//        }
-//    }
 }
