@@ -50,25 +50,53 @@ public class FileMonitorService {
     }
 
     private void executeGitCommands(Path filePath) throws IOException, InterruptedException {
-        // Executa git add, commit e push
-        String gitAdd = "git add .";// + filePath;
-        String gitCommit = "git commit -m \"" + COMMIT_MESSAGE + "\"";
-        String gitPush = "git push origin testUpload";
+        // Caminho do script
+        String scriptPath = "C:\\Workspace Java\\aptar - (Teste upload)\\Projeto-Impacta-APTAR-main\\BackEnd\\scripts\\git_auto.sh";
 
-        // Executa os comandos Git
-        executeCommand(gitAdd);
-        executeCommand(gitCommit);
-        executeCommand(gitPush);
+        // Caminho para o Bash (assumindo que você tem o Git Bash instalado)
+        String bashPath = "\"C:\\Program Files\\Git\\git-bash.exe\""; // Verifique se este é o caminho correto para o bash.exe
+
+        // Executa o script com a mensagem de commit e o caminho do arquivo como argumentos
+        String[] command = {bashPath, scriptPath, COMMIT_MESSAGE, filePath.toString()};
+        executeCommand(command);
     }
 
-    private void executeCommand(String command) throws IOException, InterruptedException {
-        Process process = Runtime.getRuntime().exec(command);
+
+
+
+//    private void executeGitCommands(Path filePath) throws IOException, InterruptedException {
+//        // Executa git add, commit e push
+//        String gitAdd = "git add .";// + filePath;
+//        String gitCommit = "git commit -m \"" + COMMIT_MESSAGE + "\"";
+//        String gitPush = "git push origin testUpload";
+//
+//        // Executa os comandos Git
+//        executeCommand(gitAdd);
+//        executeCommand(gitCommit);
+//        executeCommand(gitPush);
+//    }
+
+    private void executeCommand(String[] command) throws IOException, InterruptedException {
+        ProcessBuilder processBuilder = new ProcessBuilder(command);
+        Process process = processBuilder.start();
         int exitCode = process.waitFor();
 
         if (exitCode == 0) {
-            System.out.println("Comando \"" + command + "\" executado com sucesso.");
+            System.out.println("Comando \"" + String.join(" ", command) + "\" executado com sucesso.");
         } else {
-            System.out.println("Erro ao executar o comando: " + command);
+            System.out.println("Erro ao executar o comando: " + String.join(" ", command));
         }
     }
+
+
+//    private void executeCommand(String command) throws IOException, InterruptedException {
+//        Process process = Runtime.getRuntime().exec(command);
+//        int exitCode = process.waitFor();
+//
+//        if (exitCode == 0) {
+//            System.out.println("Comando \"" + command + "\" executado com sucesso.");
+//        } else {
+//            System.out.println("Erro ao executar o comando: " + command);
+//        }
+//    }
 }
