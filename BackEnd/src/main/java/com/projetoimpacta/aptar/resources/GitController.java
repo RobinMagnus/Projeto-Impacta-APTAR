@@ -42,6 +42,14 @@ public class GitController {
         File uploadFile = new File(UPLOAD_DIR + "/" + file.getOriginalFilename());
 
         try {
+            File uploadDir = new File(UPLOAD_DIR);
+            if (!uploadDir.exists()) {
+                boolean dirCreated = uploadDir.mkdirs();
+                if (!dirCreated) {
+                    return "Erro ao criar a pasta de upload: " + UPLOAD_DIR;
+                }
+            }
+            
             // Salvar o arquivo na pasta de upload
             String originalFilename = file.getOriginalFilename();
             uploadFile = new File(UPLOAD_DIR, originalFilename);
