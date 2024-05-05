@@ -1,9 +1,12 @@
 package com.projetoimpacta.aptar.resources;
 
+import com.projetoimpacta.aptar.dtos.FormsFinalizacaoDTO;
+import com.projetoimpacta.aptar.services.FormsFinalizacaoService;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.PersonIdent;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
@@ -18,60 +21,35 @@ import java.io.IOException;
 @RequestMapping("/git")
 public class GitController {
 
-    private static final String REPO_URL = "https://github.com/CodeByTeusSilva/Projeto-Impacta-APTAR.git";
-    private static final String LOCAL_DIR = "C:\\Workspace Java\\aptar - (Teste upload)\\Projeto-Impacta-APTAR-main";
-    private static final String COMMIT_MESSAGE = "Add image";
-    private static final String UPLOAD_DIR = LOCAL_DIR + "\\upload";
+    @Autowired
+    private FormsFinalizacaoService formsFinalizacaoService;
 
-    @Value("${git.username}")
-    private String USERNAME;  // Adicione seu nome de usuário GitHub
-    @Value("${git.token}")
-    private String TOKEN;
+    private static final String UPLOAD_DIR = "C:\\Workspace Java\\aptar - (Teste upload)\\Projeto-Impacta-APTAR-main\\upload"; // Defina o caminho correto para o diretório de upload
 
     @PostMapping("/upload")
-    public String uploadImage(@RequestParam("file") MultipartFile file) {
-        String result = "";
-        File uploadFile = new File(UPLOAD_DIR + "/" + file.getOriginalFilename());
-
+    public String uploadImage(@RequestParam("chamadoId") Long chamadoId,
+                              @RequestParam("observacoes") String observacoes,
+                              @RequestParam("file") MultipartFile file) {
         try {
             // Salvar o arquivo na pasta de upload
+            String originalFilename = file.getOriginalFilename();
+            File uploadFile = new File(UPLOAD_DIR, originalFilename);
             file.transferTo(uploadFile);
 
-            // Clonar ou abrir o repositório localmente
-            Git git = null;
-            File gitDirectory = new File(LOCAL_DIR);
+            // Cria um FormsFinalizacaoDTO com os dados de entrada
+            FormsFinalizacaoDTO formsFinalizacaoDTO = new FormsFinalizacaoDTO();
+            formsFinalizacaoDTO.setObservacoes(observacoes);
+            formsFinalizacaoDTO.setFotoUrl(originalFilename); // Salvar o nome do arquivo na fotoUrl
 
-            if (gitDirectory.exists() && gitDirectory.isDirectory()) {
-                git = Git.open(gitDirectory);
-            } else {
-                git = Git.cloneRepository()
-                        .setURI(REPO_URL)
-                        .setDirectory(gitDirectory)
-                        .call();
-            }
+            // Chamar o serviço para criar ou atualizar FormsFinalizacao
+            formsFinalizacaoService.create(chamadoId, formsFinalizacaoDTO, file);
 
-            // Adicionar o arquivo à pasta de upload
-            git.add().addFilepattern("upload/" + file.getOriginalFilename()).call();
-
-
-            // Cometer a alteração
-            git.commit()
-                    .setMessage(COMMIT_MESSAGE)
-                    .setAuthor(new PersonIdent("Your Name", "your-email@example.com"))
-                    .call();
-
-            // Enviar as alterações para o repositório remoto
-            git.push()
-                    .setCredentialsProvider(new UsernamePasswordCredentialsProvider(USERNAME, TOKEN))
-                    .setRemote("origin")
-                    .call();
-
-            result = "Imagem enviada com sucesso!";
-        } catch (IOException | GitAPIException e) {
+            return "Imagem enviada e FormsFinalizacao atualizado com sucesso!";
+        } catch (IOException e) {
+            // Lidar com exceções relacionadas ao IO
             e.printStackTrace();
-            result = "Erro ao enviar a imagem: " + e.getMessage();
+            return "Erro ao enviar a imagem: " + e.getMessage();
         }
-
-        return result;
     }
 }
+
