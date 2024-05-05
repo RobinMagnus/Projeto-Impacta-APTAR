@@ -1,12 +1,9 @@
 package com.projetoimpacta.aptar.resources;
 
-import com.projetoimpacta.aptar.dtos.FormsFinalizacaoDTO;
-import com.projetoimpacta.aptar.services.FormsFinalizacaoService;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.PersonIdent;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
@@ -78,4 +75,3 @@ public class GitController {
         return result;
     }
 }
-
