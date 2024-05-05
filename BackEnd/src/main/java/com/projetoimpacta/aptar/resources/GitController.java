@@ -33,15 +33,25 @@ public class GitController {
     private String USERNAME;  // Adicione seu nome de usuário GitHub
     @Value("${git.token}")
     private String TOKEN;
-    
+
     @PostMapping("/upload")
-    public String uploadImage(@RequestParam("file") MultipartFile file) {
+    public String uploadImage(@RequestParam("chamadoId") Long chamadoId,
+                              @RequestParam("observacoes") String observacoes,
+                              @RequestParam("file") MultipartFile file) {
         String result = "";
         File uploadFile = new File(UPLOAD_DIR + "/" + file.getOriginalFilename());
 
         try {
             // Salvar o arquivo na pasta de upload
+            String originalFilename = file.getOriginalFilename();
+            uploadFile = new File(UPLOAD_DIR, originalFilename);
             file.transferTo(uploadFile);
+
+            FormsFinalizacaoDTO formsFinalizacaoDTO = new FormsFinalizacaoDTO();
+            formsFinalizacaoDTO.setObservacoes(observacoes);
+            formsFinalizacaoDTO.setFotoUrl(originalFilename);
+
+            formsFinalizacaoService.create(chamadoId, formsFinalizacaoDTO, file);
 
             // Clonar ou abrir o repositório localmente
             Git git = null;
