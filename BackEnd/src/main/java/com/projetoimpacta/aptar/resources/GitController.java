@@ -55,13 +55,13 @@ public class GitController {
             uploadFile = new File(UPLOAD_DIR, originalFilename);
             file.transferTo(uploadFile);
 
+            result = "Imagem enviada com sucesso!";
+
             FormsFinalizacaoDTO formsFinalizacaoDTO = new FormsFinalizacaoDTO();
             formsFinalizacaoDTO.setObservacoes(observacoes);
             formsFinalizacaoDTO.setFotoUrl(originalFilename);
 
             formsFinalizacaoService.create(chamadoId, formsFinalizacaoDTO, file);
-
-            result = "Imagem enviada com sucesso!";
         } catch (IOException e) {
             e.printStackTrace();
             result = "Erro ao enviar a imagem: " + e.getMessage();
