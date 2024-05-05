@@ -50,23 +50,48 @@ public class GitController {
         }
 
         try {
-            System.out.println("Iniciando o upload do arquivo: " + file.getOriginalFilename());
-
             // Salvar o arquivo na pasta de upload
+            String originalFilename = file.getOriginalFilename();
+            uploadFile = new File(UPLOAD_DIR, originalFilename);
             file.transferTo(uploadFile);
-            System.out.println("Arquivo salvo em: " + uploadFile.getAbsolutePath());
 
-            // Instanciando FormsFinalizacaoDTO e passando as informações relevantes
             FormsFinalizacaoDTO formsFinalizacaoDTO = new FormsFinalizacaoDTO();
             formsFinalizacaoDTO.setObservacoes(observacoes);
-            formsFinalizacaoDTO.setFotoUrl(uploadFile.getName()); // Use apenas o nome do arquivo
+            formsFinalizacaoDTO.setFotoUrl(originalFilename);
 
-            // Logando a criação de FormsFinalizacao
-            System.out.println("Criando FormsFinalizacao para chamadoId: " + chamadoId);
             formsFinalizacaoService.create(chamadoId, formsFinalizacaoDTO, file);
 
+            // Clonar ou abrir o repositório localmente
+            Git git = null;
+            File gitDirectory = new File(LOCAL_DIR);
+
+            if (gitDirectory.exists() && gitDirectory.isDirectory()) {
+                git = Git.open(gitDirectory);
+            } else {
+                git = Git.cloneRepository()
+                        .setURI(REPO_URL)
+                        .setDirectory(gitDirectory)
+                        .call();
+            }
+
+            // Adicionar o arquivo à pasta de upload
+            git.add().addFilepattern("upload/" + file.getOriginalFilename()).call();
+
+
+            // Cometer a alteração
+            git.commit()
+                    .setMessage(COMMIT_MESSAGE)
+                    .setAuthor(new PersonIdent("Your Name", "your-email@example.com"))
+                    .call();
+
+            // Enviar as alterações para o repositório remoto
+            git.push()
+                    .setCredentialsProvider(new UsernamePasswordCredentialsProvider(USERNAME, TOKEN))
+                    .setRemote("origin")
+                    .call();
+
             result = "Imagem enviada com sucesso!";
-        } catch (IOException e) {
+        } catch (IOException | GitAPIException e) {
             e.printStackTrace();
             result = "Erro ao enviar a imagem: " + e.getMessage();
         }
