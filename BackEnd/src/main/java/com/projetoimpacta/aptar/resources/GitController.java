@@ -39,7 +39,6 @@ public class GitController {
         try {
             // Salvar o arquivo na pasta de upload
             file.transferTo(uploadFile);
-
             result = "Imagem enviada com sucesso!";
         } catch (IOException e) {
             e.printStackTrace();
