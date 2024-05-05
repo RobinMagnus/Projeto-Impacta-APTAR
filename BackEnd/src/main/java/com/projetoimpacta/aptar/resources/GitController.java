@@ -61,37 +61,8 @@ public class GitController {
 
             formsFinalizacaoService.create(chamadoId, formsFinalizacaoDTO, file);
 
-            // Clonar ou abrir o repositório localmente
-            Git git = null;
-            File gitDirectory = new File(LOCAL_DIR);
-
-            if (gitDirectory.exists() && gitDirectory.isDirectory()) {
-                git = Git.open(gitDirectory);
-            } else {
-                git = Git.cloneRepository()
-                        .setURI(REPO_URL)
-                        .setDirectory(gitDirectory)
-                        .call();
-            }
-
-            // Adicionar o arquivo à pasta de upload
-            git.add().addFilepattern("upload/" + file.getOriginalFilename()).call();
-
-
-            // Cometer a alteração
-            git.commit()
-                    .setMessage(COMMIT_MESSAGE)
-                    .setAuthor(new PersonIdent("Your Name", "your-email@example.com"))
-                    .call();
-
-            // Enviar as alterações para o repositório remoto
-            git.push()
-                    .setCredentialsProvider(new UsernamePasswordCredentialsProvider(USERNAME, TOKEN))
-                    .setRemote("origin")
-                    .call();
-
             result = "Imagem enviada com sucesso!";
-        } catch (IOException | GitAPIException e) {
+        } catch (IOException e) {
             e.printStackTrace();
             result = "Erro ao enviar a imagem: " + e.getMessage();
         }
