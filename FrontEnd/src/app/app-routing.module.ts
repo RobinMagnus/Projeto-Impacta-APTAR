@@ -9,23 +9,23 @@ import { ConsultaTecnicoComponent } from './consultas/consulta-tecnico/consulta-
 import { ConsultasComponent } from './consultas/consultas.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full'},
-  { path: 'home', component: HomeComponent},
-  { path: 'login', component: LoginComponent},
-  { path: 'cadastro',
-    loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroModule)
-  },
-  {path: 'formtecnico', component: FormTecnicoComponent},
-  { path: 'formempresa', component: FormEmpresaComponent},  
-  { path: 'consultaEmpresa', component: ConsultaEmpresaComponent},
-  { path: 'consultas',
-  loadChildren: () => import('./consultas/consultas.module').then(m => m.ConsultasModule)
-   },
+{ path: '', redirectTo: '/home', pathMatch: 'full'},
+{ path: 'home', component: HomeComponent},
+{ path: 'login', component: LoginComponent},
+{ path: 'cadastro',
+loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroModule)
+},
+{path: 'formtecnico', component: FormTecnicoComponent},
+{ path: 'formempresa', component: FormEmpresaComponent},
+{ path: 'consultaEmpresa', component: ConsultaEmpresaComponent},
+{ path: 'consultas', 
+loadChildren: () => import('./consultas/consultas.module').then(m => m.ConsultasModule)
+},
 
-  ]
+]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+imports: [RouterModule.forRoot(routes)],
+exports: [RouterModule]
 })
 export class AppRoutingModule { }

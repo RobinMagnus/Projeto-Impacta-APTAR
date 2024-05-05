@@ -7,7 +7,7 @@ import { ConsultaEmpresaComponent } from './consulta-empresa/consulta-empresa.co
 import { ConsultaRoutingModule } from './consultas.routing.module';
 import { TabelaEmpresaComponent } from './tabela-empresa/tabela-empresa.component';
 import { TabelaTecnicoComponent } from './tabela-tecnico/tabela-tecnico.component';
-import { PerfilTecnicoComponent } from './perfil-tecnico/perfil-tecnico.component';
+
 
 
 
@@ -17,7 +17,7 @@ import { PerfilTecnicoComponent } from './perfil-tecnico/perfil-tecnico.componen
     ConsultaEmpresaComponent,
     TabelaEmpresaComponent,
     TabelaTecnicoComponent,
-    PerfilTecnicoComponent
+
     
   ],
   imports: [

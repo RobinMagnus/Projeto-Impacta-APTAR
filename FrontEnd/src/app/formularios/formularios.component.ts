@@ -25,11 +25,11 @@ export class FormulariosComponent {
     console.log('consulta' + this.tipoUsuario)
   
     if (this.tipoUsuario && this.tipoUsuario.length === 11) {
-    this.authService.getTecnicoEncontrado(),
+    this.authService.login,
     this.tecnicoEncontrado= true;
   } 
   if  (this.tipoUsuario && this.tipoUsuario.length === 14) {
-    this.authService.getEmpresaEncontrada();
+    this.authService.login;
     this.empresaEncontrada=true;
 
   }

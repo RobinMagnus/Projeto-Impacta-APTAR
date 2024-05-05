@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,9 +17,7 @@ import {AppMaterialModule} from "./shared/app-material/app-material.module";
 import { ConsultasModule } from './consultas/consultas.module';
 import { AuthService } from './login/auth.service';
 import { ConsultasComponent } from './consultas/consultas.component';
-import { AberturaChamadoEmpresaComponent } from './formularios/formularios/abertura-chamado-empresa/abertura-chamado-empresa.component';
-import { FormularioDeEntregaTecnicoComponent } from './formularios/formularios/formulario-de-entrega-tecnico/formulario-de-entrega-tecnico.component';
-import { FormulariosComponent } from './formularios/formularios/formularios.component';
+import { FormulariosComponent } from './formularios/formularios.component';
 import { AberturaDeChamadoEmpresaComponent } from './formularios/abertura-de-chamado-empresa/abertura-de-chamado-empresa.component';
 import { FormularioDeEntregaTecnicosComponent } from './formularios/formulario-de-entrega-tecnicos/formulario-de-entrega-tecnicos.component';
 
@@ -25,33 +25,35 @@ import { FormularioDeEntregaTecnicosComponent } from './formularios/formulario-d
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    LoginComponent,
-    CadastroComponent,
-    ConsultasComponent,
-    AberturaChamadoEmpresaComponent,
-    FormularioDeEntregaTecnicoComponent,
-    FormulariosComponent,
-    AberturaDeChamadoEmpresaComponent,
-    FormularioDeEntregaTecnicosComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    FlexLayoutModule,
-    AppRoutingModule,
-    CadastroModule,
-    AppMaterialModule,
-    ConsultasModule
-  ],
-  exports: [],
-  providers: [AuthService],
-  bootstrap: [AppComponent]
+declarations: [
+AppComponent,
+HomeComponent,
+LoginComponent,
+CadastroComponent,
+ConsultasComponent,
+AberturaDeChamadoEmpresaComponent,
+FormularioDeEntregaTecnicosComponent,
+FormulariosComponent,
+AberturaDeChamadoEmpresaComponent,
+FormularioDeEntregaTecnicosComponent
+],
+imports: [
+BrowserModule,
+AppRoutingModule,
+BrowserAnimationsModule,
+FormsModule,
+ReactiveFormsModule,
+HttpClientModule,
+FlexLayoutModule,
+AppRoutingModule,
+CadastroModule,
+AppMaterialModule,
+ConsultasModule
+
+],
+exports: [],
+schemas: [CUSTOM_ELEMENTS_SCHEMA],
+providers: [AuthService],
+bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -24,6 +24,8 @@ public class Tecnico extends Entidade implements Serializable {
     @Column(unique = true)
     private String cpf;
 
+    private String email;
+
     @JsonIgnore
     @OneToMany(mappedBy = "tecnico")
     private List<Chamado> chamados = new ArrayList<>();
