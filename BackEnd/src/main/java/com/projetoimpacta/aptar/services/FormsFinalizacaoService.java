@@ -2,19 +2,15 @@ package com.projetoimpacta.aptar.services;
 
 import com.projetoimpacta.aptar.domain.Chamado;
 import com.projetoimpacta.aptar.domain.FormsFinalizacao;
-import com.projetoimpacta.aptar.dtos.ChamadoDTOinput;
 import com.projetoimpacta.aptar.dtos.FormsFinalizacaoDTO;
 import com.projetoimpacta.aptar.repositories.ChamadoRepository;
 import com.projetoimpacta.aptar.repositories.FormsFinalizacaoRepository;
-import jakarta.transaction.Transactional;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Optional;
 
 @Service
 public class FormsFinalizacaoService {
