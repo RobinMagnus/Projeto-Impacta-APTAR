@@ -48,7 +48,7 @@ public class FormsFinalizacaoService {
 
     private String saveFile(MultipartFile file) throws IOException {
         // Diretório onde o arquivo será salvo
-        String uploadDir = "C:\\Workspace Java\\aptar - (Teste upload)\\Projeto-Impacta-APTAR-main\\upload";
+        String uploadDir = "caminho/do/diretorio/upload";
         // Nome do arquivo original enviado
         String originalFilename = file.getOriginalFilename();
         // Crie um novo arquivo no diretório de upload
