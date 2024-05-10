@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "d236236b-852f-4590-a84d-1998fdfdb78a",
 		"name": "Aptar",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "29127693"
 	},
 	"item": [
@@ -14,17 +14,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/tecnicos",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"tecnicos"
-							]
-						}
+						"url": "http://localhost:8080/tecnicos"
 					},
 					"response": []
 				},
@@ -33,18 +23,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/tecnicos/4",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"tecnicos",
-								"4"
-							]
-						}
+						"url": "http://localhost:8080/tecnicos/4"
 					},
 					"response": []
 				},
@@ -53,19 +32,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/tecnicos/search/55656833003",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"tecnicos",
-								"search",
-								"55656833003"
-							]
-						}
+						"url": "http://localhost:8080/tecnicos/search/55656833003"
 					},
 					"response": []
 				},
@@ -76,24 +43,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nome\": \"Paulo Silva\",\r\n    \"email\": \"paulo@mail.com\",\r\n    \"senha\": \"123\",\r\n    \"telefone\": \"11912345678\",\r\n    \"endereco\": {\r\n        \"logradouro\": \"Rua Anibal\",\r\n        \"numero\": 123,\r\n        \"complemento\": null,\r\n        \"cep\": \"01234567\",\r\n        \"bairro\": \"Bragança\",\r\n        \"cidade\": \"São Paulo\",\r\n        \"estado\": \"SP\"\r\n    },\r\n    \"cpf\": \"12345548957\"\r\n}",
+							"raw": "{\r\n    \"nome\": \"Paulo Silva\",\r\n    \"email\": \"paulo@mail.com\",\r\n    \"senha\": \"123\",\r\n    \"telefone\": \"11912345678\",\r\n    \"endereco\": {\r\n        \"logradouro\": \"Rua Anibal\",\r\n        \"numero\": 123,\r\n        \"complemento\": null,\r\n        \"cep\": \"01234567\",\r\n        \"bairro\": \"Bragança\",\r\n        \"cidade\": \"São Paulo\",\r\n        \"estado\": \"SP\"\r\n    },\r\n    \"cpf\": \"73308277034\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": {
-							"raw": "http://localhost:8080/tecnicos",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"tecnicos"
-							]
-						}
+						"url": "http://localhost:8080/tecnicos"
 					},
 					"response": []
 				},
@@ -111,18 +68,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "http://localhost:8080/tecnicos/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"tecnicos",
-								"1"
-							]
-						}
+						"url": "http://localhost:8080/tecnicos/1"
 					},
 					"response": []
 				},
@@ -131,18 +77,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/tecnicos/4",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"tecnicos",
-								"4"
-							]
-						}
+						"url": "http://localhost:8080/tecnicos/4"
 					},
 					"response": []
 				}
@@ -156,17 +91,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/empresas",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"empresas"
-							]
-						}
+						"url": "http://localhost:8080/empresas"
 					},
 					"response": []
 				},
@@ -175,18 +100,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/empresas/401",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"empresas",
-								"401"
-							]
-						}
+						"url": "http://localhost:8080/empresas/6"
 					},
 					"response": []
 				},
@@ -195,19 +109,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/empresas/search/69008832000150",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"empresas",
-								"search",
-								"69008832000150"
-							]
-						}
+						"url": "http://localhost:8080/empresas/search/69008832000150"
 					},
 					"response": []
 				},
@@ -225,17 +127,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "http://localhost:8080/empresas",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"empresas"
-							]
-						}
+						"url": "http://localhost:8080/empresas"
 					},
 					"response": []
 				},
@@ -253,18 +145,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "http://localhost:8080/empresas/7",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"empresas",
-								"7"
-							]
-						}
+						"url": "http://localhost:8080/empresas/7"
 					},
 					"response": []
 				},
@@ -273,18 +154,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/empresas/10",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"empresas",
-								"10"
-							]
-						}
+						"url": "http://localhost:8080/empresas/10"
 					},
 					"response": []
 				}
@@ -298,17 +168,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/chamados",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"chamados"
-							]
-						}
+						"url": "http://localhost:8080/chamados"
 					},
 					"response": []
 				},
@@ -317,18 +177,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/chamados/5",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"chamados",
-								"5"
-							]
-						}
+						"url": "http://localhost:8080/chamados/5"
 					},
 					"response": []
 				},
@@ -337,19 +186,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/chamados/os/000015",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"chamados",
-								"os",
-								"000015"
-							]
-						}
+						"url": "http://localhost:8080/chamados/os/000015"
 					},
 					"response": []
 				},
@@ -367,17 +204,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "http://localhost:8080/chamados",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"chamados"
-							]
-						}
+						"url": "http://localhost:8080/chamados"
 					},
 					"response": []
 				},
@@ -395,18 +222,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "http://localhost:8080/chamados/5",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"chamados",
-								"5"
-							]
-						}
+						"url": "http://localhost:8080/chamados/5"
 					},
 					"response": []
 				},
@@ -415,19 +231,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/chamados/empresa/10",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"chamados",
-								"empresa",
-								"10"
-							]
-						}
+						"url": "http://localhost:8080/chamados/empresa/10"
 					},
 					"response": []
 				},
@@ -436,19 +240,20 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/chamados/tecnico/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"chamados",
-								"tecnico",
-								"1"
-							]
-						}
+						"url": "http://localhost:8080/chamados/tecnico/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Forms",
+			"item": [
+				{
+					"name": "Upload de Finalização",
+					"request": {
+						"method": "GET",
+						"header": []
 					},
 					"response": []
 				}
