@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Optional;
 
 @Service
 public class FormsFinalizacaoService {
@@ -24,21 +25,24 @@ public class FormsFinalizacaoService {
     private FormsFinalizacaoRepository formsFinalizacaoRepository;
 
     public FormsFinalizacao create(Long chamadoId, FormsFinalizacaoDTO formsFinalizacaoDTO, MultipartFile file) throws IOException {
-        // Encontrar a instância de Chamado com base no ID fornecido
-        Chamado chamado = chamadoRepository.findById(chamadoId)
-                .orElseThrow(() -> new IllegalArgumentException("Chamado não encontrado com o ID: " + chamadoId));
+        // Recupera uma instância de Chamado com base no chamadoId
+        Optional<Chamado> chamadoOpt = chamadoRepository.findById(chamadoId);
+        if (!chamadoOpt.isPresent()) {
+            throw new IllegalArgumentException("Chamado não encontrado com o ID: " + chamadoId);
+        }
+        Chamado chamado = chamadoOpt.get();
 
-        // Salvar o arquivo enviado
+        // Salvar o arquivo de imagem e obter a URL (caminho)
         String fotoUrl = saveFile(file);
 
-        // Criar uma nova instância de FormsFinalizacao com base nos dados do DTO
+        // Cria uma nova instância de FormsFinalizacao com base nos dados do DTO
         FormsFinalizacao formsFinalizacao = new FormsFinalizacao(
                 chamado,
                 formsFinalizacaoDTO.getObservacoes(),
                 fotoUrl // Usar o nome do arquivo salvo para fotoUrl
         );
 
-        // Salvar a nova instância de FormsFinalizacao no banco de dados
+        // Salva a nova instância de FormsFinalizacao no banco de dados
         return formsFinalizacaoRepository.save(formsFinalizacao);
     }
 

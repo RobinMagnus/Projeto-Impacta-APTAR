@@ -1,7 +1,7 @@
 package com.projetoimpacta.aptar.dtos;
 
 import com.projetoimpacta.aptar.domain.Chamado;
-import jakarta.validation.constraints.NotNull;
+import com.projetoimpacta.aptar.domain.FormsFinalizacao;
 
 import java.io.Serializable;
 
@@ -13,12 +13,19 @@ public class FormsFinalizacaoDTO implements Serializable {
     private String fotoUrl;
 
     public FormsFinalizacaoDTO() {}
+
     public FormsFinalizacaoDTO(Long chamadoId, String observacoes, String fotoUrl) {
         this.chamadoId = chamadoId;
         this.observacoes = observacoes;
         this.fotoUrl = fotoUrl;
     }
 
+    public FormsFinalizacaoDTO(FormsFinalizacao formsFinalizacao) {
+        this.id = formsFinalizacao.getId();
+        this.chamadoId = formsFinalizacao.getChamado() != null ? formsFinalizacao.getChamado().getId() : null;
+        this.observacoes = formsFinalizacao.getObservacoes();
+        this.fotoUrl = formsFinalizacao.getFotoUrl();
+    }
 
     public Long getId() {
         return id;
@@ -50,5 +57,12 @@ public class FormsFinalizacaoDTO implements Serializable {
 
     public void setFotoUrl(String fotoUrl) {
         this.fotoUrl = fotoUrl;
+    }
+
+    // Método para converter FormsFinalizacaoDTO em FormsFinalizacao
+    public FormsFinalizacao toEntity(Chamado chamado) {
+        FormsFinalizacao formsFinalizacao = new FormsFinalizacao(chamado, observacoes, fotoUrl);
+        formsFinalizacao.setId(id);
+        return formsFinalizacao;
     }
 }
