@@ -10,7 +10,6 @@ public class FormsFinalizacaoDTO implements Serializable {
     private Long id;
     private Long chamadoId;
     private String observacoes;
-    @NotNull(message = "O campo FOTO é requerido")
     private String fotoUrl;
 
     public FormsFinalizacaoDTO() {}
