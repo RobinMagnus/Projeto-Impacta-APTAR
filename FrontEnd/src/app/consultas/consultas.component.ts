@@ -13,8 +13,8 @@ import { AuthService } from '../login/auth.service';
 export class ConsultasComponent  {  
   
   tipoUsuario?: string;
-  tecnicoEncontrado:boolean = false;
-  empresaEncontrada:boolean = false;
+  tecnicoEncontrado: any;
+  empresaEncontrada: any;
 
   
 

@@ -19,13 +19,17 @@ export class LoginComponent {
     this.authService.login(this.email).subscribe(
       (res) => {
         console.log('Resposta do login recebida:', res);
-        
-        if (res && res.cpf) {
-          console.log('Redirecionando para consulta do técnico');
-          this.router.navigate(['consultas', 'consultaTecnico'], { state: { tipoUsuario: res.cpf } });
-        } else if (res && res.cnpj) {  
-          console.log('Redirecionando para consulta da empresa');
-          this.router.navigate(['consultas', 'consultaEmpresa'], { state: { tipoUsuario: res.cnpj } });
+
+        if (res && res.length > 0) {
+          const usuario = res[0];
+          console.log('Redirecionando para consulta');
+          // Verifica se o usuário tem o perfil TECNICO
+          if (usuario.perfis && usuario.perfis.includes('TECNICO')) {
+            this.router.navigate(['/consultas', 'consultaTecnico'], { state: { tipoUsuario: usuario.cpf } });
+          } else {
+            // Se não for TECNICO, assume-se que é ADMIN
+            this.router.navigate(['/consultas', 'consultaEmpresa'], { state: { tipoUsuario: usuario.cnpj } });
+          }
         } else {
           console.log('Nenhum usuário encontrado');
         }
@@ -36,4 +40,4 @@ export class LoginComponent {
     );
   }
   
-}  
+}

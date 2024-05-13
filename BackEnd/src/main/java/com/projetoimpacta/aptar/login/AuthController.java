@@ -1,6 +1,8 @@
 package com.projetoimpacta.aptar.login;
 
+import com.projetoimpacta.aptar.domain.Empresa;
 import com.projetoimpacta.aptar.domain.Tecnico;
+import com.projetoimpacta.aptar.repositories.EmpresaRepository;
 import com.projetoimpacta.aptar.repositories.TecnicoRepository;
 import com.projetoimpacta.aptar.services.exceptions.DataIntegrityViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +18,29 @@ public class AuthController {
     @Autowired
     private TecnicoRepository usuarioRepository;
 
+    @Autowired
+    private EmpresaRepository empresaRepository;
+
+
     @PostMapping("/login")
-    public Optional<Tecnico> login(@RequestBody Tecnico usuario) {
-        Optional<Tecnico> usuarioAutenticado = usuarioRepository.findByEmail(usuario.getEmail());
-        if (usuarioAutenticado.isPresent()) {
-            return usuarioAutenticado;
+    public Optional<?> login(@RequestBody LoginRequest loginRequest) {
+        Optional<Tecnico> tecnicoAutenticado = usuarioRepository.findByEmail(loginRequest.getEmail());
+        if (tecnicoAutenticado.isPresent()) {
+            return tecnicoAutenticado;
         } else {
-            throw new DataIntegrityViolationException("usuario ou senha incorretos.");
+            Optional<Empresa> empresaAutenticada = empresaRepository.findByEmail(loginRequest.getEmail());
+            if (empresaAutenticada.isPresent()) {
+                return empresaAutenticada;
+            } else {
+                throw new DataIntegrityViolationException("Usuário não encontrado.");
+            }
+        }
+    }
+    public static class LoginRequest {
+        private String email;
+
+        public String getEmail() {
+            return email;
         }
     }
 }

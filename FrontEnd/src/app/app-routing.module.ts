@@ -18,6 +18,7 @@ loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroMod
 {path: 'formtecnico', component: FormTecnicoComponent},
 { path: 'formempresa', component: FormEmpresaComponent},
 { path: 'consultaEmpresa', component: ConsultaEmpresaComponent},
+{ path: 'consultaTecnico/:cpf', component: ConsultaTecnicoComponent},
 { path: 'consultas', 
 loadChildren: () => import('./consultas/consultas.module').then(m => m.ConsultasModule)
 },
