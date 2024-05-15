@@ -7,6 +7,8 @@ import { FormEmpresaComponent } from './cadastro/form-empresa/form-empresa.compo
 import { ConsultaEmpresaComponent } from './consultas/consulta-empresa/consulta-empresa.component';
 import { ConsultaTecnicoComponent } from './consultas/consulta-tecnico/consulta-tecnico.component';
 import { ConsultasComponent } from './consultas/consultas.component';
+import { FormularioDeEntregaTecnicosComponent } from './formularios/formulario-de-entrega-tecnicos/formulario-de-entrega-tecnicos.component';
+import { AberturaDeChamadoEmpresaComponent } from './formularios/abertura-de-chamado-empresa/abertura-de-chamado-empresa.component';
 
 const routes: Routes = [
 { path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -22,6 +24,8 @@ loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroMod
 { path: 'consultas', 
 loadChildren: () => import('./consultas/consultas.module').then(m => m.ConsultasModule)
 },
+{path: 'aberturaChamados/tabAbertura/:tipoUsuario', component: AberturaDeChamadoEmpresaComponent },
+{path: 'formularioEntrega/tabEntrega/:tipoUsuario', component: FormularioDeEntregaTecnicosComponent },
 
 ]
 

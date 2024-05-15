@@ -14,13 +14,12 @@ import { HttpClientModule} from "@angular/common/http";
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {CadastroModule} from "./cadastro/cadastro.module";
 import {AppMaterialModule} from "./shared/app-material/app-material.module";
-import { ConsultasModule } from './consultas/consultas.module';
 import { AuthService } from './login/auth.service';
 import { ConsultasComponent } from './consultas/consultas.component';
 import { FormulariosComponent } from './formularios/formularios.component';
-import { AberturaDeChamadoEmpresaComponent } from './formularios/abertura-de-chamado-empresa/abertura-de-chamado-empresa.component';
-import { FormularioDeEntregaTecnicosComponent } from './formularios/formulario-de-entrega-tecnicos/formulario-de-entrega-tecnicos.component';
-
+import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 
 
@@ -31,11 +30,8 @@ HomeComponent,
 LoginComponent,
 CadastroComponent,
 ConsultasComponent,
-AberturaDeChamadoEmpresaComponent,
-FormularioDeEntregaTecnicosComponent,
 FormulariosComponent,
-AberturaDeChamadoEmpresaComponent,
-FormularioDeEntregaTecnicosComponent
+
 ],
 imports: [
 BrowserModule,
@@ -48,7 +44,9 @@ FlexLayoutModule,
 AppRoutingModule,
 CadastroModule,
 AppMaterialModule,
-ConsultasModule
+MatInputModule,
+MatTableModule,
+MatToolbarModule,
 
 ],
 exports: [],

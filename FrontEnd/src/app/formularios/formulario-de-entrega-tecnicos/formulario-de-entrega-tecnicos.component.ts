@@ -12,6 +12,7 @@ import {TecnicoDtoinput} from "../../models/tecnico-dtoinput";
 import {distinctUntilChanged, empty, switchMap, tap} from "rxjs";
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/login/auth.service';
+
 @Component({
   selector: 'app-formulario-de-entrega-tecnicos',
   templateUrl: './formulario-de-entrega-tecnicos.component.html',

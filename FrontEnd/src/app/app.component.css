@@ -6,7 +6,7 @@
 
   .toolbar-content {
     width: auto;
-    height: 70%;
+    height: fill;
   }
 
   .toolbar-image {
