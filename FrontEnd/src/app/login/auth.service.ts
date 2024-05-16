@@ -11,7 +11,6 @@ export class AuthService {
 
   tecnicoEncontrado: any;
   empresaEncontrada: any;
-  tipoUsuario: string = '';
 
   mostrarMenuEmitter = new EventEmitter<boolean>();
 
@@ -25,7 +24,6 @@ export class AuthService {
       map(response => {
         this.tecnicoEncontrado = response;
         this.empresaEncontrada = response;
-        this.tipoUsuario = response;
 
          if (this.tecnicoEncontrado) {
            this.router.navigate(['/dashboard', this.tecnicoEncontrado.id]);

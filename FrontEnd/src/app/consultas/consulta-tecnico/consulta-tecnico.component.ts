@@ -22,7 +22,7 @@ export class ConsultaTecnicoComponent {
 
   ) {}
 
-  Consultas() {
+   ngOnInit() {
     
     this.tecnicoEncontrado = this.authService.getTecnicoEncontrado();
     console.log(this.tecnicoEncontrado);
@@ -32,7 +32,6 @@ export class ConsultaTecnicoComponent {
     
    
 }  
-
 
 
 

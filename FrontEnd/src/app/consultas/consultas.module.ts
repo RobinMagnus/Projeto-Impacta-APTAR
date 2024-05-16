@@ -9,6 +9,7 @@ import { ConsultaRoutingModule } from './consultas.routing.module';
 import { TabelaEmpresaComponent } from './tabela-empresa/tabela-empresa.component';
 import { TabelaTecnicoComponent } from './tabela-tecnico/tabela-tecnico.component';
 import { FormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
 
 
 
@@ -37,6 +38,7 @@ import { FormsModule } from '@angular/forms';
     ConsultaRoutingModule,
     CadastroModule,
     FormsModule,
+    MatTableModule,
     
     
   ]
