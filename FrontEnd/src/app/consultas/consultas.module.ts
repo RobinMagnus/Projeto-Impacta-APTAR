@@ -20,10 +20,16 @@ import { FormsModule } from '@angular/forms';
     TabelaEmpresaComponent,
     TabelaTecnicoComponent,
 
-
-
-
     
+  ],
+
+  exports:[
+    ConsultaTecnicoComponent,
+    ConsultaEmpresaComponent,
+    TabelaEmpresaComponent,
+    TabelaTecnicoComponent,
+
+
   ],
   imports: [
     CommonModule,

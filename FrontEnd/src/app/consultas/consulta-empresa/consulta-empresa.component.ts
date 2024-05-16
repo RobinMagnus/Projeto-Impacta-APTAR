@@ -25,10 +25,10 @@ export class ConsultaEmpresaComponent  {
 
 Consultas() {
         
-    this.empresaEncontrada = this.authService.getEmpresaEncontrada();
-    console.log(this.empresaEncontrada);
-    this.tipoUsuario = history.state.tipoUsuario;
-  }
+  this.empresaEncontrada = this.authService.getEmpresaEncontrada();
+  console.log(this.empresaEncontrada);
+  this.tipoUsuario = history.state.tipoUsuario;
+}
 
 
 

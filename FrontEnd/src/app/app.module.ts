@@ -22,6 +22,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { FormulariosComponent } from './formularios/formularios.component';
 import { FormulariosModule } from './formularios/formulario.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ConsultasModule } from './consultas/consultas.module';
 
 
 
@@ -47,6 +48,7 @@ FlexLayoutModule,
 AppRoutingModule,
 CadastroModule,
 FormulariosModule,
+ConsultasModule,
 AppMaterialModule,
 MatInputModule,
 MatTableModule,

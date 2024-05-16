@@ -9,6 +9,8 @@ import { ConsultaTecnicoComponent } from './consultas/consulta-tecnico/consulta-
 import { FormularioDeEntregaTecnicosComponent } from './formularios/formulario-de-entrega-tecnicos/formulario-de-entrega-tecnicos.component';
 import { AberturaDeChamadoEmpresaComponent } from './formularios/abertura-de-chamado-empresa/abertura-de-chamado-empresa.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { TabelaTecnicoComponent } from './consultas/tabela-tecnico/tabela-tecnico.component';
+import { TabelaEmpresaComponent } from './consultas/tabela-empresa/tabela-empresa.component';
 
 const routes: Routes = [
 { path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -24,11 +26,15 @@ loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroMod
 { path: 'formempresa', component: FormEmpresaComponent},
 {path:'entrega', component: FormularioDeEntregaTecnicosComponent},
 {path:'abertura', component: AberturaDeChamadoEmpresaComponent},
-{ path: 'consultaEmpresa', component: ConsultaEmpresaComponent},
-{ path: 'consultaTecnico/:cpf', component: ConsultaTecnicoComponent},
+
+
 { path: 'consultas', 
 loadChildren: () => import('./consultas/consultas.module').then(m => m.ConsultasModule)
 },
+{path: 'chamadotec', component:TabelaTecnicoComponent},
+{path: 'chamadoemp', component:TabelaEmpresaComponent},
+{ path: 'consultaEmpresa', component: ConsultaEmpresaComponent},
+{ path: 'consultaTecnico', component: ConsultaTecnicoComponent},
 
 
 ]
