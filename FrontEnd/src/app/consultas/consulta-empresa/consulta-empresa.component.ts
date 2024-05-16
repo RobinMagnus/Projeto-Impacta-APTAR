@@ -13,7 +13,7 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './consulta-empresa.component.html',
   styleUrls: ['./consulta-empresa.component.css']
 })
-export class ConsultaEmpresaComponent implements OnInit {
+export class ConsultaEmpresaComponent  {
 
   tipoUsuario?: string;
   empresaEncontrada?: EmpresaDTOinput;
@@ -23,7 +23,7 @@ export class ConsultaEmpresaComponent implements OnInit {
   
 ) {}
 
-  ngOnInit() {
+Consultas() {
         
     this.empresaEncontrada = this.authService.getEmpresaEncontrada();
     console.log(this.empresaEncontrada);

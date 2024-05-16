@@ -1,0 +1,22 @@
+<div class="content">
+  <div *ngIf="tipoUsuario">
+    <h1 *ngIf="tecnicoEncontrado">
+      <img src=".\assets\images\tecnicoimg.png" alt="Ícone Técnico" class="icon">
+      Técnico
+    </h1>
+    <h1 *ngIf="empresaEncontrada">
+      <img src=".\assets\images\empresaimg.png" alt="Ícone Admin" class="icon">
+      Empresa
+    </h1>
+  </div>
+</div>
+
+<div class = menu>
+  <mat-card-content>
+    <mat-tab-group dynamicHeight>
+      <mat-tab label="First"> Content 1 </mat-tab>
+      <mat-tab label="Second"> Content 2 </mat-tab>
+      <mat-tab label="Third"> Content 3 </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+</div>

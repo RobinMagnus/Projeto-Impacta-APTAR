@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/login/auth.service';
   templateUrl: './tabela-tecnico.component.html',
   styleUrls: ['./tabela-tecnico.component.css']
 })
-export class TabelaTecnicoComponent implements OnInit {
+export class TabelaTecnicoComponent {
   
   chamados: Observable<Chamados[]>;
   empresas:any[] =[];
@@ -31,7 +31,7 @@ export class TabelaTecnicoComponent implements OnInit {
   
   displayedColumns = ['numeroChamado', 'cidade', 'bairro', 'empresa', 'acoes' ]
 
-  ngOnInit(): void {
+  Consultas(): void {
     const tecLogado = this.auth.getTecnicoEncontrado();
     console.log('Empresa encontrada:', tecLogado);
 

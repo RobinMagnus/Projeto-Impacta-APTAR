@@ -1,23 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppMaterialModule } from '../shared/app-material/app-material.module';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-
-import { FormulariosRoutingModule } from './formularios.routing.module';
 import { FormularioDeEntregaTecnicosComponent } from './formulario-de-entrega-tecnicos/formulario-de-entrega-tecnicos.component';
 import { AberturaDeChamadoEmpresaComponent } from './abertura-de-chamado-empresa/abertura-de-chamado-empresa.component';
+import { FormulariosRoutingModule } from './formularios.routing.module';
+
 
 @NgModule({
   declarations: [
     FormularioDeEntregaTecnicosComponent,
-    AberturaDeChamadoEmpresaComponent
-
+    AberturaDeChamadoEmpresaComponent,
+    
   ],
   exports: [
     FormularioDeEntregaTecnicosComponent,
-    AberturaDeChamadoEmpresaComponent
-
+    AberturaDeChamadoEmpresaComponent,
   ],
+
+
   imports: [
     CommonModule,
     AppMaterialModule,
@@ -25,6 +26,8 @@ import { AberturaDeChamadoEmpresaComponent } from './abertura-de-chamado-empresa
     FormsModule,
     ReactiveFormsModule
 
+    
+    
   ]
 })
 export class FormulariosModule { }

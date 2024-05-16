@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/login/auth.service';
   templateUrl: './tabela-empresa.component.html',
   styleUrls: ['./tabela-empresa.component.css']
 })
-export class TabelaEmpresaComponent implements OnInit {
+export class TabelaEmpresaComponent {
 
   chamados: Observable<Chamados[]>;
   tecnicos: any[] = [];
@@ -28,7 +28,7 @@ export class TabelaEmpresaComponent implements OnInit {
 
   displayedColumns = ['numeroChamado', 'status', 'endereco', 'tecnico'];
 
-  ngOnInit(): void {
+  Consultas(): void {
     const empresaLogada = this.auth.getEmpresaEncontrada();
     console.log('Empresa encontrada:', empresaLogada);
 

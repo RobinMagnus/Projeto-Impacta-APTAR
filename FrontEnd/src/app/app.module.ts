@@ -16,10 +16,12 @@ import {CadastroModule} from "./cadastro/cadastro.module";
 import {AppMaterialModule} from "./shared/app-material/app-material.module";
 import { AuthService } from './login/auth.service';
 import { ConsultasComponent } from './consultas/consultas.component';
-import { FormulariosComponent } from './formularios/formularios.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { FormulariosComponent } from './formularios/formularios.component';
+import { FormulariosModule } from './formularios/formulario.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 
@@ -27,10 +29,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 declarations: [
 AppComponent,
 HomeComponent,
+DashboardComponent,
 LoginComponent,
 CadastroComponent,
 ConsultasComponent,
-FormulariosComponent,
+FormulariosComponent
 
 ],
 imports: [
@@ -43,6 +46,7 @@ HttpClientModule,
 FlexLayoutModule,
 AppRoutingModule,
 CadastroModule,
+FormulariosModule,
 AppMaterialModule,
 MatInputModule,
 MatTableModule,

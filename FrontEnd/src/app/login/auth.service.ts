@@ -7,9 +7,11 @@ import { Observable, map, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
+  [x: string]: any;
 
   tecnicoEncontrado: any;
   empresaEncontrada: any;
+  tipoUsuario: string = '';
 
   mostrarMenuEmitter = new EventEmitter<boolean>();
 
@@ -23,11 +25,12 @@ export class AuthService {
       map(response => {
         this.tecnicoEncontrado = response;
         this.empresaEncontrada = response;
+        this.tipoUsuario = response;
 
          if (this.tecnicoEncontrado) {
-           this.router.navigate(['/consultas', this.tecnicoEncontrado.id]);
+           this.router.navigate(['/dashboard', this.tecnicoEncontrado.id]);
          } else if (this.empresaEncontrada) {
-           this.router.navigate(['/consultas', this.empresaEncontrada.id]);
+           this.router.navigate(['/dashboard', this.empresaEncontrada.id]);
          }
 
         return [response];

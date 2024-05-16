@@ -11,6 +11,7 @@ export class LoginComponent {
 
   email: string = '';
   senha: string = '';
+  tipoUsuario: string = '';
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -23,12 +24,15 @@ export class LoginComponent {
         if (res && res.length > 0) {
           const usuario = res[0];
           console.log('Redirecionando para consulta');
+          this.tipoUsuario = usuario.perfis && usuario.perfis.includes('TECNICO') ? 'TECNICO' : 'ADMIN';
           // Verifica se o usuário tem o perfil TECNICO
           if (usuario.perfis && usuario.perfis.includes('TECNICO')) {
-            this.router.navigate(['/consultas', 'consultaTecnico'], { state: { tipoUsuario: usuario.cpf } });
+            this.router.navigate(['/dashboard'], { state: { tipoUsuario: usuario.cpf } });
+            console.log('usuario', this.tipoUsuario)
           } else {
             // Se não for TECNICO, assume-se que é ADMIN
-            this.router.navigate(['/consultas', 'consultaEmpresa'], { state: { tipoUsuario: usuario.cnpj } });
+            this.router.navigate(['/dashboard'], { state: { tipoUsuario: usuario.cnpj } });
+            console.log('usuario', this.tipoUsuario)
           }
         } else {
           console.log('Nenhum usuário encontrado');
