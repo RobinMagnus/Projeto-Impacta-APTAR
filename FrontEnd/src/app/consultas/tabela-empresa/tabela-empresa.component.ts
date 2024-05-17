@@ -46,7 +46,7 @@ export class TabelaEmpresaComponent implements OnInit {
       chamados.forEach((chamado: Chamados) => {
         const tecnicoEncontrado = this.tecnicos.find(tecnico => tecnico.id === chamado.tecnico);
         if (tecnicoEncontrado) {
-          chamado.tecnico = tecnicoEncontrado.nome;
+          chamado.tecnico =this.auth.tecnicoEncontrado.nome;
         }
       });
 
