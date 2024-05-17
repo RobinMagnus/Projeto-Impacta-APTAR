@@ -6,7 +6,8 @@ import com.projetoimpacta.aptar.domain.NumeroChamado;
 import com.projetoimpacta.aptar.domain.Tecnico;
 import com.projetoimpacta.aptar.domain.enums.Prioridade;
 import com.projetoimpacta.aptar.domain.enums.Status;
-import com.projetoimpacta.aptar.dtos.ChamadoDTOinput_out;
+import com.projetoimpacta.aptar.dtos.ChamadoDTOinput;
+import com.projetoimpacta.aptar.dtos.ChamadoDTOout;
 import com.projetoimpacta.aptar.repositories.ChamadoRepository;
 import com.projetoimpacta.aptar.services.exceptions.ObjectnotFoundException;
 import jakarta.validation.Valid;
@@ -45,11 +46,11 @@ public class ChamadoService {
         return repository.findAll();
     }
 
-    public Chamado create(@Valid ChamadoDTOinput_out objDTO) {
+    public Chamado create(@Valid ChamadoDTOinput objDTO) {
         return repository.save(newChamado(objDTO));
     }
 
-    public Chamado update(Long id, ChamadoDTOinput_out objDTO) {
+    public Chamado update(Long id, ChamadoDTOinput objDTO) {
         objDTO.setId(id);
         Chamado chamadoExistente = findById(id);
         Chamado novoChamado = newChamado(objDTO);
@@ -57,7 +58,7 @@ public class ChamadoService {
         return repository.save(novoChamado);
     }
 
-    private Chamado newChamado(ChamadoDTOinput_out obj) {
+    private Chamado newChamado(ChamadoDTOinput obj) {
         Tecnico tecnico = tecnicoService.findById(obj.getTecnico());
         Empresa empresa = empresaService.findById(obj.getEmpresa());
 
@@ -82,23 +83,23 @@ public class ChamadoService {
         return chamado;
     }
 
-    public List<ChamadoDTOinput_out> findByEmpresaId(Long id) {
+    public List<ChamadoDTOout> findByEmpresaId(Long id) {
         List<Chamado> chamados = repository.findAll();
-        List<ChamadoDTOinput_out> chamadosDTO = new ArrayList<>();
+        List<ChamadoDTOout> chamadosDTO = new ArrayList<>();
         for (Chamado chamado : chamados) {
             if (chamado.getEmpresa().getId().equals(id)) {
-                chamadosDTO.add(new ChamadoDTOinput_out(chamado));
+                chamadosDTO.add(new ChamadoDTOout(chamado));
             }
         }
         return chamadosDTO;
     }
 
-    public List<ChamadoDTOinput_out> findByTecnicoId(Long id) {
+    public List<ChamadoDTOout> findByTecnicoId(Long id) {
         List<Chamado> chamados = repository.findAll();
-        List<ChamadoDTOinput_out> chamadosDTO = new ArrayList<>();
+        List<ChamadoDTOout> chamadosDTO = new ArrayList<>();
         for (Chamado chamado : chamados) {
             if (chamado.getTecnico().getId().equals(id)) {
-                chamadosDTO.add(new ChamadoDTOinput_out(chamado));
+                chamadosDTO.add(new ChamadoDTOout(chamado));
             }
         }
         return chamadosDTO;

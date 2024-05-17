@@ -35,6 +35,13 @@ public class TecnicoResource {
         return ResponseEntity.ok().body(new TecnicoDTOout(obj));
     }
 
+//    @GetMapping(value = "/searchEmail/{email}")
+//    public ResponseEntity<TecnicoDTOout> findByEmail(@PathVariable String email) {
+//        Tecnico obj = service.findByEmail(email);
+//        new TecnicoDTOinput(obj);
+//        return ResponseEntity.ok().body(new TecnicoDTOout(obj));
+//    }
+
     @GetMapping
     public ResponseEntity<List<TecnicoDTOout>> findAll() {
         List<Tecnico> list = service.findAll();

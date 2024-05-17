@@ -9,7 +9,7 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public class ChamadoDTOinput_out implements Serializable {
+public class ChamadoDTOinput implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
@@ -38,10 +38,10 @@ public class ChamadoDTOinput_out implements Serializable {
     private String nomeEmpresa;
 
 
-    public ChamadoDTOinput_out() {
+    public ChamadoDTOinput() {
     }
 
-    public ChamadoDTOinput_out(Chamado obj) {
+    public ChamadoDTOinput(Chamado obj) {
         this.id = obj.getId();
         this.numeroChamado = obj.getNumeroChamado();
         this.dataAbertura = obj.getDataAbertura();
@@ -148,4 +148,5 @@ public class ChamadoDTOinput_out implements Serializable {
     public void setNomeEmpresa(String nomeEmpresa) {
         this.nomeEmpresa = nomeEmpresa;
     }
+
 }
