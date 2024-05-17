@@ -21,6 +21,11 @@ public class EmpresaDTOout implements Serializable {
     protected String telefone;
     protected Endereco endereco;
     private String cnpj;
+    private String email;
+    private String senha;
+
+
+
 
 
     public EmpresaDTOout(Empresa obj) {
@@ -28,6 +33,8 @@ public class EmpresaDTOout implements Serializable {
         this.telefone = obj.getTelefone();
         this.endereco = obj.getEndereco();
         this.cnpj = obj.getCnpj();
+        this.email= obj.getEmail();
+        this.senha = obj.getSenha();
     }
 
 
@@ -57,5 +64,21 @@ public class EmpresaDTOout implements Serializable {
     }
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
+    }
+    public String getEmail() {
+        return email;
+    }
+
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    public String getSenha() {
+        return senha;
+    }
+
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 }

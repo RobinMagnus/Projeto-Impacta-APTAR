@@ -14,6 +14,8 @@ public class TecnicoDTOout implements Serializable {
     protected String telefone;
     protected Endereco endereco;
     private String cpf;
+    private String email;
+    private String senha;
 
 
     public TecnicoDTOout() {
@@ -24,6 +26,8 @@ public class TecnicoDTOout implements Serializable {
         this.telefone = obj.getTelefone();
         this.endereco = obj.getEndereco();
         this.cpf = obj.getCpf();
+        this.email= obj.getEmail();
+        this.senha = obj.getSenha();
     }
 
 
@@ -53,6 +57,26 @@ public class TecnicoDTOout implements Serializable {
     }
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public static long getSerialversionuid() {
+        return serialVersionUID;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
 }

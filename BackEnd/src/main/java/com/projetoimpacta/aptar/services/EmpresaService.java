@@ -68,5 +68,6 @@ public class EmpresaService {
             throw new DataIntegrityViolationException("Email já cadastrado no sistema!");
         }
 
+
     }
 }
