@@ -36,12 +36,12 @@ public class EmpresaResource {
         return ResponseEntity.ok().body(new EmpresaDTOout(obj));
     }
 
-    @GetMapping(value = "/searchEmail/{email}")
-    public ResponseEntity<EmpresaDTOout> findByEmail(@PathVariable String email) {
-        Empresa obj = service.findByEmail(email);
-        new EmpresaDTOinput(obj);
-        return ResponseEntity.ok().body(new EmpresaDTOout(obj));
-    }
+//    @GetMapping(value = "/searchEmail/{email}")
+//    public ResponseEntity<EmpresaDTOout> findByEmail(@PathVariable String email) {
+//        Empresa obj = service.findByEmail(email);
+//        new EmpresaDTOinput(obj);
+//        return ResponseEntity.ok().body(new EmpresaDTOout(obj));
+//    }
 
     @GetMapping
     public ResponseEntity<List<EmpresaDTOout>> findAll() {
